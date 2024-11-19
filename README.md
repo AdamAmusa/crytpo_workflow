@@ -1,4 +1,4 @@
-# Final Project
+# Project Name
 
 **Title:** Items Application Manager  
 **Name:** Patrick Murphy  
