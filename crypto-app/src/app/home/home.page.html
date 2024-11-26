@@ -6,6 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,8 +14,21 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+  <ion-list>
+    <ion-item *ngFor="let crypto of displayedCryptos">
+      <ion-label>
+        <h2>{{ crypto.name}}</h2>
+        <p>{{ crypto.id}}</p>
+      </ion-label>
+    </ion-item>
+    <div style="padding: 0px;">
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="onPageChange($event)" aria-label="Select page">
+    </mat-paginator>
   </div>
+  </ion-list>
+
+
+  
 </ion-content>
