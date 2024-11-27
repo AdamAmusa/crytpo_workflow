@@ -22,13 +22,13 @@
         <p>{{ crypto.id}}</p>
       </ion-label>
     </ion-item>
-    <div style="padding: 0px;">
+    
+  </ion-list>
+
+<div style="padding: 0px;">
     <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
       (page)="onPageChange($event)" aria-label="Select page">
     </mat-paginator>
   </div>
-  </ion-list>
-
-
   
 </ion-content>
