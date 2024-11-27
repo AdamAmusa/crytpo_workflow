@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-
+import { environment } from 'src/environments/environment';
 
 
 
@@ -8,13 +7,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CrpytoService {
-private readonly url = "https://api.coingecko.com/api/v3/coins/list";
-private readonly options = {method: 'GET', headers: {accept: 'application/json'}};
 
-
-
-
-  constructor() { }
+  
+private readonly url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&per_page=250";
+private readonly options = {method: 'GET', headers: {accept: 'application/json', 'x-cg-demo-api-key': environment.apiKey}};
 
   async getCoinList(): Promise<any> {   
     try {
