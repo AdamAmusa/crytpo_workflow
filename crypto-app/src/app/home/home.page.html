@@ -18,8 +18,16 @@
   <ion-list>
     <ion-item *ngFor="let crypto of displayedCryptos">
       <ion-label>
+        <div style="display:flex">
+          <div style="flex: 0 0 auto; margin-right: 10px;" >
+            <img [src]="crypto.image" alt="crypto.name" style="width: 30px; height: 30px;">
+          </div>
+          <div style="flex:1;">
         <h2>{{ crypto.name}}</h2>
         <p>{{ crypto.id}}</p>
+      </div>
+        </div>
+        
       </ion-label>
     </ion-item>
     
