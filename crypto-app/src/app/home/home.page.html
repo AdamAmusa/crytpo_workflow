@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Crypto
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Crypto</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -26,6 +26,10 @@
         <h2>{{ crypto.name}}</h2>
         <p>{{ crypto.id}}</p>
       </div>
+      <div style="flex:0; margin-right: 10px;">
+        <h2>EUR{{crypto.current_price}}</h2>
+        <p>{{crypto.market_cap}}</p>
+      </div>  
         </div>
         
       </ion-label>

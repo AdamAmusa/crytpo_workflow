@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList } from '@ionic/angular/standalone';
 import { NgFor } from '@angular/common';
+
 import { CrpytoService } from '../services/crpyto.service';
 
 @Component({
