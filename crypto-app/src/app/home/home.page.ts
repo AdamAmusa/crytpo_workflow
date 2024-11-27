@@ -17,7 +17,7 @@ export class HomePage {
 
  cryptos: any[] = [];
  displayedCryptos: any[] = [];
- pageSize = 15;
+ pageSize = 100;
 length = 0;
 pageIndex = 0;
 
