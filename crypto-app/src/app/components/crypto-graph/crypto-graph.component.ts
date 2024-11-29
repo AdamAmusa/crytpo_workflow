@@ -1,21 +1,23 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart,registerables } from 'chart.js';
 import { CrpytoService } from 'src/app/services/crpyto.service';
-import { IonContent } from '@ionic/angular/standalone';
-
-
+import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton} from '@ionic/angular/standalone';
+import{chevronBackOutline} from "ionicons/icons";
+import { addIcons } from 'ionicons';
 @Component({
   selector: 'app-crypto-graph',
   templateUrl: './crypto-graph.component.html',
   styleUrls: ['./crypto-graph.component.scss'],
   standalone: true,
-  imports:[IonContent]
+  imports:[IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton]
 })
 export class CryptoGraphComponent implements OnInit {
   @ViewChild('cryptoChart') cryptoChart?: ElementRef;
   id?: string;
   constructor(private crypto: CrpytoService) {
+    addIcons({chevronBackOutline});
     Chart.register(...registerables); // Register all necessary components
+    
 
    }
 
@@ -37,7 +39,7 @@ export class CryptoGraphComponent implements OnInit {
           datasets: [
             {
               label: 'Price',
-              data: data.prices.map((price: any) => price[1]),
+              data: data.prices.map((price: any) =>  price[1]),
               borderColor: 'blue',
               fill: false
             }
