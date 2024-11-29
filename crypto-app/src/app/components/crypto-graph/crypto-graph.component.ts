@@ -33,7 +33,7 @@ export class CryptoGraphComponent implements OnInit {
       new Chart(this.cryptoChart?.nativeElement, {
         type: 'line',
         data: {
-          labels: data.prices.map((price: any) => price[0]),
+          labels: data.prices.map((price: any) => new Date(price[0]).toLocaleTimeString()),
           datasets: [
             {
               label: 'Price',
