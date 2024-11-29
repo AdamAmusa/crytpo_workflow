@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList } from '@ionic/angular/standalone';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList, IonSelect } from '@ionic/angular/standalone';
 import { NgFor } from '@angular/common';
 
 import { CrpytoService } from '../services/crpyto.service';
@@ -10,22 +10,22 @@ import { CrpytoService } from '../services/crpyto.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, NgFor, IonList, MatPaginatorModule],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, NgFor, IonList, MatPaginatorModule, IonSelect],
 })
 
 
 export class HomePage {
 
- cryptos: any[] = [];
- displayedCryptos: any[] = [];
- pageSize = 100;
-length = 0;
-pageIndex = 0;
+  cryptos: any[] = [];
+  displayedCryptos: any[] = [];
+  pageSize = 100;
+  length = 0;
+  pageIndex = 0;
 
-  constructor(private crypto:CrpytoService) {}
+  constructor(private crypto: CrpytoService) { }
 
   async ngOnInit() {
-   const data = await this.crypto.getCoinList();
+    const data = await this.crypto.getCoinList();
     this.cryptos = data;
     this.length = data.length;
     this.updateDisplayedCryptos();
@@ -42,5 +42,5 @@ pageIndex = 0;
     this.pageSize = event.pageSize;
     this.updateDisplayedCryptos();
   }
-  
+
 }

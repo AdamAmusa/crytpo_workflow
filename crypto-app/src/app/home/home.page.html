@@ -16,7 +16,8 @@
 
 
   <ion-list>
-    <ion-item *ngFor="let crypto of displayedCryptos">
+   
+    <ion-item button *ngFor="let crypto of displayedCryptos">
       <ion-label>
         <div style="display:flex">
           <div style="flex: 0 0 auto; margin-right: 10px;" >
@@ -34,7 +35,6 @@
         
       </ion-label>
     </ion-item>
-    
   </ion-list>
 
 <div style="padding: 0px;">
