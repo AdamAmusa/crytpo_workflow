@@ -27,11 +27,19 @@
         <h2>{{ crypto.name}}</h2>
         <p>{{ crypto.id}}</p>
       </div>
-      <div style="flex:0; margin-right: 10px;">
-        <h2>€{{crypto.current_price}}</h2>
+      <div class="crypto-price">
+        <h2>€{{crypto.current_price }} </h2>
+        <div class="change-percentage">
+        <div *ngIf="crypto.price_change_percentage_24h < 0" class="negative-change">
+          <ion-icon name="caret-down"></ion-icon>
+        </div>
+        <div *ngIf="crypto.price_change_percentage_24h > 0" class="positive-change">
+          <ion-icon name="caret-up"></ion-icon>
+        </div>
         <p [ngClass]="{'positive-change': crypto.price_change_percentage_24h > 0, 'negative-change': crypto.price_change_percentage_24h < 0}" id="pricechange">
-          {{ crypto.price_change_percentage_24h }}%
+          {{ crypto.price_change_percentage_24h | number:'1.2-2' }}%
         </p>
+      </div>
       </div>  
         </div>
         

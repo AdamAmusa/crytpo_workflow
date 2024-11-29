@@ -33,3 +33,19 @@
 .negative-change {
   color: red;
 }
+
+.crypto-price{
+  display:flex;
+   gap: 10px;
+   padding: 5px;
+}
+
+.crypto-price h2,
+.crypto-price p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.change-percentage{
+  display: flex;
+}

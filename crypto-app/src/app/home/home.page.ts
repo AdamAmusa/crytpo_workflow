@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList, IonSelect } from '@ionic/angular/standalone';
-import { NgFor, NgClass } from '@angular/common';
-
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList, IonSelect, IonIcon } from '@ionic/angular/standalone';
+import { NgFor, NgClass,NgIf, DecimalPipe } from '@angular/common';
+import{caretDown, caretUp} from "ionicons/icons";
 import { CrpytoService } from '../services/crpyto.service';
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, NgFor, IonList, MatPaginatorModule, IonSelect, NgClass],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, NgFor, IonList, MatPaginatorModule, IonSelect, NgClass, IonIcon, NgIf, DecimalPipe],
 })
 
 
@@ -23,7 +24,9 @@ export class HomePage {
   length = 0;
   pageIndex = 0;
 
-  constructor(private crypto: CrpytoService) { }
+  constructor(private crypto: CrpytoService) {
+    addIcons({caretDown, caretUp});
+   }
 
   async ngOnInit() {
     this.crypto.getCoinList().subscribe(data => {
