@@ -28,8 +28,10 @@
         <p>{{ crypto.id}}</p>
       </div>
       <div style="flex:0; margin-right: 10px;">
-        <h2>EUR{{crypto.current_price}}</h2>
-        <p>{{crypto.market_cap}}</p>
+        <h2>€{{crypto.current_price}}</h2>
+        <p [ngClass]="{'positive-change': crypto.price_change_percentage_24h > 0, 'negative-change': crypto.price_change_percentage_24h < 0}" id="pricechange">
+          {{ crypto.price_change_percentage_24h }}%
+        </p>
       </div>  
         </div>
         
