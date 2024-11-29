@@ -22,4 +22,6 @@ private readonly options = {method: 'GET', headers: {accept: 'application/json',
       return [];
     }
   }
+
+  //retrieve graph data by id
 }
