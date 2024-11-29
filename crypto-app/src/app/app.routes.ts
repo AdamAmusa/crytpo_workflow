@@ -6,6 +6,10 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
+    path: 'crypto-graph',
+    loadComponent: () => import('./components/crypto-graph/crypto-graph.component').then((m) => m.CryptoGraphComponent),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

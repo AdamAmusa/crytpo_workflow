@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList, IonSelect, IonIcon } from '@ionic/angular/standalone';
-import { NgFor, NgClass,NgIf, DecimalPipe } from '@angular/common';
+import { NgFor, NgClass,NgIf, DecimalPipe} from '@angular/common';
 import{caretDown, caretUp} from "ionicons/icons";
 import { CrpytoService } from '../services/crpyto.service';
 import { addIcons } from 'ionicons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,7 @@ export class HomePage {
   length = 0;
   pageIndex = 0;
 
-  constructor(private crypto: CrpytoService) {
+  constructor(private crypto: CrpytoService, private router: Router) {
     addIcons({caretDown, caretUp});
    }
 
@@ -46,6 +47,12 @@ export class HomePage {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updateDisplayedCryptos();
+  }
+
+  viewGraph(id: string) {
+    console.log('View graph for:', id);
+    this.crypto.setcoinId(id);
+    this.router.navigate(['crypto-graph']);
   }
 
 }
