@@ -2,8 +2,10 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Chart,registerables } from 'chart.js';
 import { CrpytoService } from 'src/app/services/crpyto.service';
 import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton} from '@ionic/angular/standalone';
+import  'chartjs-plugin-crosshair'; // Import the crosshair plugin
 import{chevronBackOutline} from "ionicons/icons";
 import { addIcons } from 'ionicons';
+
 @Component({
   selector: 'app-crypto-graph',
   templateUrl: './crypto-graph.component.html',
@@ -11,16 +13,17 @@ import { addIcons } from 'ionicons';
   standalone: true,
   imports:[IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton]
 })
+
 export class CryptoGraphComponent implements OnInit {
   @ViewChild('cryptoChart') cryptoChart?: ElementRef;
-  id?: string;
+
   constructor(private crypto: CrpytoService) {
     addIcons({chevronBackOutline});
     Chart.register(...registerables); // Register all necessary components
     
 
    }
-
+   
 
   //retrieve chart data
   //plug in to chart.js
@@ -41,10 +44,16 @@ export class CryptoGraphComponent implements OnInit {
               label: 'Price',
               data: data.prices.map((price: any) =>  price[1]),
               borderColor: 'blue',
-              fill: false
+              fill: false,
+              pointRadius: 0, 
+              borderJoinStyle: 'round',
+              pointHoverBackgroundColor:'white',
+              pointBorderWidth:10,
+              pointHoverRadius:10,
             }
           ]
-        }
+        },
+        
       });
     });
   }

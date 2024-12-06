@@ -29,6 +29,7 @@
     "@capacitor/status-bar": "6.0.2",
     "@ionic/angular": "^8.0.0",
     "chart.js": "^4.4.6",
+    "chartjs-plugin-crosshair": "^2.0.0",
     "ionicons": "^7.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
