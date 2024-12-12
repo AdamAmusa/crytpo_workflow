@@ -55,6 +55,8 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
           labels: data.prices.map((price: any) => new Date(price[0]).toLocaleTimeString()),
           datasets: [
             {
+              hoverBorderJoinStyle: 'round',
+              borderJoinStyle: 'round',
               label: 'Price',
               data: data.prices.map((price: any) => price[1]),
               borderColor: this.lineColor,
@@ -62,8 +64,7 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
               fill: false,
               pointRadius: 0,
               pointHoverRadius: 6,
-              pointBackgroundColor: 'blue',
-              pointHoverBackgroundColor: 'darkblue',
+              pointHoverBackgroundColor: this.lineColor,
               borderWidth: 2,
 
             }
