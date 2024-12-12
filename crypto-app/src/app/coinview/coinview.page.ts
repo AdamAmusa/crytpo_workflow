@@ -22,6 +22,7 @@ export class CoinviewPage implements OnInit {
     this.coinName = this.crypto.getcoinId();
      this.crypto.getMarketData().subscribe(data => {
       this.data = data;
+      
     });
    }
 

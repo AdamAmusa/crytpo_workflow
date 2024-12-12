@@ -9,9 +9,15 @@ import { environment } from 'src/environments/environment';
 })
 export class CrpytoService {
   private coinId?: string;
+  private marketstatus?: boolean;
   public setcoinId(id: string) {
     this.coinId = id;
+
   }
+
+  public getmarketStatus(): boolean {
+      return this.marketstatus?? false;
+    }
 
   public getcoinId() {
     return this.coinId;
@@ -61,6 +67,13 @@ export class CrpytoService {
         .then(response => response.json())
         .then(data => {
           observer.next(data);
+          if(data[0]?.market_cap_change_percentage_24h > 0){
+            console.log('Market status is up');
+            this.marketstatus = true;
+          }
+          else{
+            this.marketstatus = false;
+          }
           observer.complete();
         })
         .catch(error => {

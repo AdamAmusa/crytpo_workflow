@@ -15,17 +15,25 @@ import { addIcons } from 'ionicons';
 export class CryptoGraphComponent implements OnInit, OnDestroy {
   @ViewChild('cryptoChart') cryptoChart?: ElementRef;
   private chartInstance: Chart | null = null;
-
+  private lineColor?: string;
   constructor(private crypto: CrpytoService) {
     addIcons({ chevronBackOutline });
     Chart.register(...registerables);
   }
 
   ngOnInit() {
+    if(this.crypto.getmarketStatus()){
+      this.lineColor = 'green';
+    }
+    else{
+      this.lineColor = 'red';
+    }
     this.createChart();
     this.beforePrintHandler();
     
   }
+
+ 
 
 
  beforePrintHandler () {
@@ -49,7 +57,7 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
             {
               label: 'Price',
               data: data.prices.map((price: any) => price[1]),
-              borderColor: 'blue',
+              borderColor: this.lineColor,
               backgroundColor: 'rgba(54, 162, 235, 0.2)',
               fill: false,
               pointRadius: 0,
