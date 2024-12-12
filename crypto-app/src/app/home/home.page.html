@@ -1,57 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Crypto
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="explore" href="home/explore">
+      <ion-label>Explore</ion-label>
+    </ion-tab-button>
 
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Crypto</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-
-  <ion-list>
-
-    <ion-item button  (click)="viewGraph(crypto.id)" *ngFor="let crypto of displayedCryptos">
-      <ion-label>
-        <div style="display:flex">
-          <div style="flex: 0 0 auto; margin-right: 10px;">
-            <img [src]="crypto.image" alt="crypto.name" style="width: 30px; height: 30px;">
-          </div>
-          <div style="flex:1;">
-            <h2>{{ crypto.name}}</h2>
-            <p>{{ crypto.id}}</p>
-          </div>
-          <div class="crypto-price">
-            <h2>€{{crypto.current_price }} </h2>
-            <div class="change-percentage">
-              <div *ngIf="crypto.price_change_percentage_24h < 0" class="negative-change">
-                <ion-icon name="caret-down"></ion-icon>
-              </div>
-              <div *ngIf="crypto.price_change_percentage_24h > 0" class="positive-change">
-                <ion-icon name="caret-up"></ion-icon>
-              </div>
-              <p [ngClass]="{'positive-change': crypto.price_change_percentage_24h > 0, 'negative-change': crypto.price_change_percentage_24h < 0}"
-                id="pricechange">
-                {{ crypto.price_change_percentage_24h | number:'1.2-2' }}%
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </ion-label>
-    </ion-item>
-  </ion-list>
-
-  <div style="padding: 0px;">
-    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
-      (page)="onPageChange($event)" aria-label="Select page">
-    </mat-paginator>
-  </div>
-
-</ion-content>
+<ion-tab-button tab="watchlist" href="">
+      <ion-label>Watchlist</ion-label>
+    </ion-tab-button> 
+  </ion-tab-bar>
+</ion-tabs>

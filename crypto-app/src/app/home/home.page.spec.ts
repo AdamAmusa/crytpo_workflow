@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+
 
 import { HomePage } from './home.page';
 
@@ -10,6 +12,11 @@ describe('HomePage', () => {
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    await TestBed.configureTestingModule({
+      declarations: [ HomePage ],
+      imports: [provideRouter([])]
+    }).compileComponents();
   });
 
   it('should create', () => {
