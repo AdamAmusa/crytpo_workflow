@@ -20,29 +20,29 @@
     <div class="chartContainer">
         <app-crypto-graph></app-crypto-graph>
     </div>
+    <ion-card-title style="padding-left: 20px;">Stats</ion-card-title>
     <ion-card>
-        <ion-card-title>Stats</ion-card-title>
         <ion-card-content *ngFor="let crypto of data">    
-            <ion-grid>
+            <ion-grid style="height:100%; width: 100%;">
                 <ion-row>
-                    <ion-col>Market cap</ion-col>
-                    <ion-col>{{crypto.market_cap}}</ion-col>
+                    <ion-col size="6">Market cap</ion-col>
+                    <ion-col class="coindata" size="6">{{crypto.market_cap}}</ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col>Market cap rank</ion-col>
-                    <ion-col>{{crypto.market_cap_rank}}</ion-col>
+                    <ion-col size="6">Market cap rank</ion-col>
+                    <ion-col class="coindata" size="6">#{{crypto.market_cap_rank}}</ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col>Circulating supply</ion-col>
-                    <ion-col>{{crypto.circulating_supply}}</ion-col>
+                    <ion-col size="6">Circulating supply</ion-col>
+                    <ion-col class="coindata" size="6">{{crypto.circulating_supply}}</ion-col>
+                </ion-row>
+                <ion-row *ngIf="crypto.max_supply !== null">
+                    <ion-col size="6">Max supply</ion-col>
+                    <ion-col class="coindata" size="6">{{crypto.max_supply}}</ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col>Max supply</ion-col>
-                    <ion-col>{{crypto.max_supply}}</ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col>24h trading volume</ion-col>
-                    <ion-col>{{crypto.total_volume}}</ion-col>
+                    <ion-col size="6">24h trading volume</ion-col>
+                    <ion-col class="coindata" size="6">{{crypto.total_volume}}</ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card-content>

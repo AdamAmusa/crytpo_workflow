@@ -56,7 +56,8 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
               pointHoverRadius: 6,
               pointBackgroundColor: 'blue',
               pointHoverBackgroundColor: 'darkblue',
-              borderWidth: 2
+              borderWidth: 2,
+
             }
           ]
         },
@@ -75,6 +76,9 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
             }
           },
           plugins: {
+            legend: {
+              display: false,
+            },
             tooltip: {
               enabled: true,
               position: 'nearest',
