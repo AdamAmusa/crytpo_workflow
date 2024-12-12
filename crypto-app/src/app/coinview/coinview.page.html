@@ -1,21 +1,24 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button icon="chevron-back-outline"></ion-back-button>
-      </ion-buttons>
-      <ion-title>
-          CoinView
-      </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            {{coinName}}
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-      <ion-toolbar>
-          <ion-title size="large">CoinView</ion-title>
-      </ion-toolbar>
-  </ion-header>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large"></ion-title>
+        </ion-toolbar>
+    </ion-header>
 
+    <div class="chartContainer">
+        <app-crypto-graph></app-crypto-graph>
+    </div>
+                
 
-  <app-crypto-graph></app-crypto-graph>
 </ion-content>

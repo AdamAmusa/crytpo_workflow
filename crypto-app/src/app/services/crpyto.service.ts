@@ -12,6 +12,10 @@ export class CrpytoService {
   public setcoinId(id: string) {
     this.coinId = id;
   }
+
+  public getcoinId() {
+    return this.coinId;
+  }
   
 private readonly url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&per_page=250";
 private readonly options = {method: 'GET', headers: {accept: 'application/json', 'x-cg-demo-api-key': environment.apiKey}};

@@ -23,7 +23,16 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.createChart();
+    this.beforePrintHandler();
+    
   }
+
+
+ beforePrintHandler () {
+    for (let id in Chart.instances) {
+        Chart.instances[id].resize();
+    }
+}
 
   createChart() {
     this.crypto.getChartdata().subscribe(data => {
@@ -57,6 +66,13 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
           interaction: {
             mode: 'index',
             intersect: false
+          },
+          layout: {
+            
+            padding: {
+              left: 10,
+              right: 10,
+            }
           },
           plugins: {
             tooltip: {
