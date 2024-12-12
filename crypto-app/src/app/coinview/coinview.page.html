@@ -16,13 +16,32 @@
         </ion-toolbar>
     </ion-header>
 
+    <div style="padding-bottom: 15px;">
+        <ion-card class="coinTitle">
+
+            <ion-card-content >
+                <ion-grid class="coinName">
+                    <ion-row>
+                        {{data[0]?.name}} -
+                        {{data[0]?.symbol}}
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+            <ion-grid>
+                <ion-row class="coinprice">
+                    <ion-card-title style="font-size: xx-large;">€{{data[0]?.current_price}}</ion-card-title>
+                </ion-row>
+            </ion-grid>
+
+        </ion-card>
+    </div>
 
     <div class="chartContainer">
         <app-crypto-graph></app-crypto-graph>
     </div>
-    <ion-card-title style="padding-left: 20px;">Stats</ion-card-title>
+    <ion-card-title style="padding-left: 20px; padding-top: 40px;">Stats</ion-card-title>
     <ion-card>
-        <ion-card-content *ngFor="let crypto of data">    
+        <ion-card-content *ngFor="let crypto of data">
             <ion-grid style="height:100%; width: 100%;">
                 <ion-row>
                     <ion-col size="6">Market cap</ion-col>
