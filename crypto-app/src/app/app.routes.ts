@@ -9,6 +9,9 @@ export const routes: Routes = [
     path: 'coinview',
     loadComponent: () => import('./coinview/coinview.page').then( m => m.CoinviewPage)
   },
-
-
+  {
+    path: '',
+    loadComponent: () => import('./home/home.page').then( m => m.HomePage)
+      
+    },
 ];
