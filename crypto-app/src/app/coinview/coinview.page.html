@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button icon="chevron-back-outline"></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+          CoinView
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+      <ion-toolbar>
+          <ion-title size="large">CoinView</ion-title>
+      </ion-toolbar>
+  </ion-header>
+
+
+  <app-crypto-graph></app-crypto-graph>
+</ion-content>

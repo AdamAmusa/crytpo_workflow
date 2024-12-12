@@ -49,7 +49,7 @@ export class ExplorePage{
   viewGraph(id: string) {
     console.log('View graph for:', id);
     this.crypto.setcoinId(id);
-    this.router.navigate(['crypto-graph']);
+    this.router.navigate(['/coinview']);
   }
 
 }
