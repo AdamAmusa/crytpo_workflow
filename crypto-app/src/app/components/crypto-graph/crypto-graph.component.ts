@@ -96,14 +96,15 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
           scales: {
             x: {
               title: {
-                display: true,
+                display: false,
                 text: 'Time'
               },
               grid: {
                 display: true,
                 drawOnChartArea: true,
                 drawTicks: true
-              }
+              },
+              
             },
             y: {
               title: {

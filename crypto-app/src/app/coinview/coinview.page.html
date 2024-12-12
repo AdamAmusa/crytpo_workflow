@@ -16,9 +16,37 @@
         </ion-toolbar>
     </ion-header>
 
+
     <div class="chartContainer">
         <app-crypto-graph></app-crypto-graph>
     </div>
-                
+    <ion-card>
+        <ion-card-title>Stats</ion-card-title>
+        <ion-card-content *ngFor="let crypto of data">    
+            <ion-grid>
+                <ion-row>
+                    <ion-col>Market cap</ion-col>
+                    <ion-col>{{crypto.market_cap}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>Market cap rank</ion-col>
+                    <ion-col>{{crypto.market_cap_rank}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>Circulating supply</ion-col>
+                    <ion-col>{{crypto.circulating_supply}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>Max supply</ion-col>
+                    <ion-col>{{crypto.max_supply}}</ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>24h trading volume</ion-col>
+                    <ion-col>{{crypto.total_volume}}</ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
 
 </ion-content>
