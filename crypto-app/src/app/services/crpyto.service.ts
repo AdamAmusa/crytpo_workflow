@@ -10,11 +10,21 @@ import { environment } from 'src/environments/environment';
 export class CrpytoService {
   private coinId?: string;
   private marketstatus?: boolean;
+
+
+  ngOnInit() {
+    if(this.coinId == null){
+      this.coinId = localStorage.getItem('coinId') ?? '';
+    }
+
+  }
   public setcoinId(id: string) {
+    localStorage.setItem('coinId', id);
     this.coinId = id;
 
   }
 
+  
   public getmarketStatus(): boolean {
       return this.marketstatus?? false;
     }
@@ -61,6 +71,9 @@ export class CrpytoService {
 
 
   getMarketData(): Observable<any> {
+    if(this.coinId == null){
+      this.coinId = localStorage.getItem('coinId') ?? '';
+    }
     const url = `https://api.coingecko.com/api/v3/coins/markets?ids=${this.coinId}&vs_currency=eur`;
     return new Observable(observer => {
       fetch(url, this.options)

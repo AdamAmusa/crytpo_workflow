@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button icon="chevron-back-outline"></ion-back-button>
+            <ion-back-button icon="chevron-back-outline" defaultHref="/home/explore"></ion-back-button>
         </ion-buttons>
         <ion-title>
-            {{coinName}}
+            View
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -19,7 +19,7 @@
     <div style="padding-bottom: 15px;">
         <ion-card class="coinTitle">
 
-            <ion-card-content >
+            <ion-card-content>
                 <ion-grid class="coinName">
                     <ion-row>
                         {{data[0]?.name}} -

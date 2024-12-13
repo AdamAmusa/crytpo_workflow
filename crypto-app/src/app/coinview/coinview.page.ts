@@ -27,6 +27,7 @@ export class CoinviewPage implements OnInit {
    }
 
   ngOnInit() {
+    
   }
 
 
