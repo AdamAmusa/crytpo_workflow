@@ -16,6 +16,7 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
   @ViewChild('cryptoChart') cryptoChart?: ElementRef;
   private chartInstance: Chart | null = null;
   private lineColor?: string;
+  public errorMessage: any;
   constructor(private crypto: CrpytoService) {
     addIcons({ chevronBackOutline });
     Chart.register(...registerables);
@@ -161,7 +162,11 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
           }
         }]
       });
-    });
+    }
+  ,error =>{
+    this.errorMessage =error + ": Rate Limit Exceeded";
+  }
+  );
   }
 
   // Method to clean up the chart when component is destroyed

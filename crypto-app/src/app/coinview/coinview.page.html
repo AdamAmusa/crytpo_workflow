@@ -37,11 +37,13 @@
     </div>
 
     <div class="chartContainer">
+       {{errorMessage}} 
         <app-crypto-graph></app-crypto-graph>
     </div>
     <ion-card-title style="padding-left: 20px; padding-top: 40px;">Stats</ion-card-title>
     <ion-card>
         <ion-card-content *ngFor="let crypto of data">
+            
             <ion-grid style="height:100%; width: 100%;">
                 <ion-row>
                     <ion-col size="6">Market cap</ion-col>

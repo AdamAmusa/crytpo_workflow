@@ -34,8 +34,17 @@ export class CrpytoService {
   }
 
   private readonly url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&per_page=250";
-  private readonly options = { method: 'GET', headers: { accept: 'application/json', 'x-cg-demo-api-key': environment.apiKey } };
-
+  private readonly options = { 
+    method: 'GET', 
+    headers: { 
+      'accept': 'application/json', 
+      'x-cg-demo-api-key': environment.apiKey,
+      // Added CORS headers
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-cg-demo-api-key'
+    }
+  };
   getCoinList(): Observable<any> {
     return new Observable(observer => {
       fetch(this.url, this.options)
@@ -77,7 +86,8 @@ export class CrpytoService {
     const url = `https://api.coingecko.com/api/v3/coins/markets?ids=${this.coinId}&vs_currency=eur`;
     return new Observable(observer => {
       fetch(url, this.options)
-        .then(response => response.json())
+        .then(response =>
+           response.json())
         .then(data => {
           observer.next(data);
           if(data[0]?.market_cap_change_percentage_24h > 0){
