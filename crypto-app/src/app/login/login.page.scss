@@ -14,11 +14,28 @@
     margin-top: 30px;
 }
 
+.login-logo-img {
+    width: 100%;
+
+}
+
 .login-link {
     align-self: flex-end;
     --padding-end: 12px;
 
 }
+
+.auth-select-button {
+    color: var(--ion-color-primary); /* Default color for buttons */
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .auth-select-button.active {
+    color: var(--ion-color-primary); /* Highlight the active button */
+    text-decoration: underline; /* Underline when active */
+  }
+
 
 .login-label {
     align-self: flex-start;

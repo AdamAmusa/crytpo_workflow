@@ -11,20 +11,38 @@
     </ion-toolbar>
   </ion-header>
 
+  <div class="login-logo">
+    <img src="./assets/background2.png" alt="logo" class="login-logo-img">
+  </div>
+  <form [formGroup]="userAuthForm">
+    <ion-button fill="clear"
+                 class="auth-select-button"
+                [ngClass]="{'active':selectButton === 'login'}"
+                (click)="selectAuth('login')">
+                Login</ion-button>
+    <ion-button fill="clear"
+                class="auth-select-button"
+                [ngClass]="{'active':selectButton === 'signup'}"
+                (click)="selectAuth('signup')">
+                Sign Up</ion-button>
+    <ion-card class="login-card">
 
-  <ion-card class="login-card">
+      <ion-label class="login-label">Email</ion-label>
+      <ion-input aria-label="Custom input" placeholder="Enter your email" errorText="Invalid email"
+        formControlName="email" type="email"
+        [class.ion-invalid]="userAuthForm.get('email')?.invalid && userAuthForm.get('email')?.touched"
+        [class.ion-valid]="userAuthForm.get('email')?.valid"
+        class="login-input"></ion-input>
 
-    <ion-label class="login-label">Email</ion-label>
-    <ion-input aria-label="Custom input" placeholder="Enter your email" class="login-input"></ion-input>
-
-    <ion-label class="login-label">Password</ion-label>
-    <ion-input aria-label="Custom input" placeholder="Enter your password" class="login-input"></ion-input>
-    <a href="" class="login-link">Forgot password?</a>
+      <ion-label class="login-label">Password</ion-label>
+      <ion-input aria-label="Custom input" placeholder="Enter your password" class="login-input"></ion-input>
+      <a href="" class="login-link">Forgot password?</a>
 
 
-    <ion-button class="login-button" expand="block">Sign in</ion-button>
-  </ion-card>
-
+      <ion-button *ngIf="isVisible"  class="login-button" [disabled]="!userAuthForm.valid" expand="block" (click) ="handleAuthentication()" >Sign in</ion-button>
+      <ion-button *ngIf="!isVisible"  class="login-button" [disabled]="!userAuthForm.valid" expand="block" (click) ="handleRegistration()" >Sign up</ion-button>
+    </ion-card>
+  </form>
 
 
 
