@@ -14,4 +14,8 @@ export const routes: Routes = [
     path: 'coinview',
     loadComponent: () => import('./coinview/coinview.page').then( m => m.CoinviewPage)
   },
+  {
+    path: 'login',
+    loadComponent: () => import('./login/login.page').then( m => m.LoginPage)
+  },
 ];
