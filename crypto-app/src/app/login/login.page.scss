@@ -1,0 +1,26 @@
+.login-card {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    align-items: center;
+
+}
+.login-label {
+    align-self: flex-start; /* Align the label to the start */
+    margin-bottom: 5px; /* Add some space below the label */
+    padding-left: 15px;
+  }
+
+.login-input {
+    margin-bottom: 15px;
+    background-color: black;
+    border-radius: 5px;
+    width: calc(100% - 30px);
+    /* Adjust width to account for padding */
+    --padding-start: 10px;
+    /* Add left padding */
+    --padding-end: 10px;
+    /* Add right padding */
+    height: 50px;
+
+}

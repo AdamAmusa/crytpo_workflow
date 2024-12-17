@@ -1,7 +1,12 @@
 import { Routes } from '@angular/router';
+import {AuthGuard, redirectUnauthorizedTo} from '@angular/fire/auth-guard'
+
+  const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 export const routes: Routes = [
+
   {
+    
     path: '',
     redirectTo: 'home/explore',
     pathMatch: 'full',
@@ -9,10 +14,17 @@ export const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.routes').then((m) => m.routes),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  { path:'home',
+    loadChildren: () => import('./home/home.page').then( m => m.HomePage),
   },
   {
     path: 'coinview',
-    loadComponent: () => import('./coinview/coinview.page').then( m => m.CoinviewPage)
+    loadComponent: () => import('./coinview/coinview.page').then( m => m.CoinviewPage),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
     path: 'login',
