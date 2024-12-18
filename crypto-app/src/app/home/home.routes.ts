@@ -10,14 +10,17 @@ export const routes: Routes = [
                 path: 'explore',
                 loadComponent: () => import('../explore/explore.page').then(m => m.ExplorePage)
             },
+            {
+                path: 'watchlist',
+                loadComponent: () => import('../watchlist/watchlist.page').then(m => m.WatchlistPage)
+            },
 
-              
         ],
-         
+
     },
-     {
-                path: ' ',
-                redirectTo: '/home/explore',
-                pathMatch: 'full',
-              },
+    {
+        path: ' ',
+        redirectTo: '/home/explore',
+        pathMatch: 'full',
+    },
 ];

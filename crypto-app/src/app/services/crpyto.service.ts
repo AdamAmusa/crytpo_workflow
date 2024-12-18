@@ -45,6 +45,7 @@ export class CrpytoService {
       'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-cg-demo-api-key'
     }
   };
+  
   getCoinList(): Observable<any> {
     return new Observable(observer => {
       fetch(this.url, this.options)
