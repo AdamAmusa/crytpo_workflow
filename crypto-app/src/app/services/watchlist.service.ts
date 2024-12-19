@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { CollectionReference, DocumentData, onSnapshot } from '@angular/fire/firestore';
+import { collectionData, CollectionReference, DocumentData, onSnapshot, query, where } from '@angular/fire/firestore';
 import { addDoc, collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, switchMap } from 'rxjs';
 import { getDocs } from '@angular/fire/firestore';
 
 
@@ -25,6 +25,15 @@ export class WatchlistService {
   private readonly authenticatedUser$ = new BehaviorSubject(this.authService.currentUser);
 
 
+  private readonly userWatchlist$ = this.authenticatedUser$.pipe(
+    switchMap(user => !user ? of([]) :
+      collectionData(
+        query(collection(this.tasksCollectionRef, `${user?.uid}/watchlist`)),
+        { idField: 'id' }
+      ) as Observable<Task[]>
+    )
+  );
+
 
   async addCoinToWatchlist(coin: Task) {
     const user = this.authService.currentUser;
@@ -32,15 +41,11 @@ export class WatchlistService {
     await setDoc(userWatchlistRef, coin, { merge: true });
   }
 
-  async getCoinList() {
-    const user = this.authService.currentUser;
-    const userWatchlistRef = collection(this.tasksCollectionRef, `${user?.uid}/watchlist`);
-    const snapshot = await getDocs(userWatchlistRef);
-    const data = snapshot.docs.map(doc => doc.data());
-    console.log('database data:', data);
-    return this.filterCoinList(data);
+  getCoinList(): Observable<string> {
+    return this.userWatchlist$.pipe(
+      map(coinList => this.filterCoinList(coinList))
+    );
   }
-
   private filterCoinList(coinList: any[]) {
     const list = coinList.map(coin => coin.coinId).join(',');
     console.log('Coin list:', list);

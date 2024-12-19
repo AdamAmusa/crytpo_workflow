@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { WatchlistService } from './watchlist.service';
 import { switchMap } from 'rxjs/operators';
@@ -111,7 +111,7 @@ export class CrpytoService {
   }
 
   getWatchlist(): Observable<any> {
-    return from(this.watchlist.getCoinList()).pipe(
+    return this.watchlist.getCoinList().pipe(
       switchMap((coinList: string) => {
         console.log('Query string for watchlist:', coinList);
         const url = `https://api.coingecko.com/api/v3/coins/markets?ids=${coinList}&vs_currency=eur`;
@@ -131,3 +131,6 @@ export class CrpytoService {
     );
   }
 }
+
+
+
