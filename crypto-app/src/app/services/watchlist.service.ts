@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { onSnapshot } from '@angular/fire/firestore';
+import { CollectionReference, DocumentData, onSnapshot } from '@angular/fire/firestore';
 import { addDoc, collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
+import { getDocs } from '@angular/fire/firestore';
 
 
 
@@ -34,22 +35,18 @@ export class WatchlistService {
   async getCoinList() {
     const user = this.authService.currentUser;
     const userWatchlistRef = collection(this.tasksCollectionRef, `${user?.uid}/watchlist`);
-    onSnapshot(userWatchlistRef, (snapshot) => {
-      const data = snapshot.docs.map(doc => doc.data());
-
-      return this.filterCoinList(data);
-    },
-      (error) => {
-        console.log(error);
-      },
-
-    );
-
+    const snapshot = await getDocs(userWatchlistRef);
+    const data = snapshot.docs.map(doc => doc.data());
+    console.log('database data:', data);
+    return this.filterCoinList(data);
   }
 
   private filterCoinList(coinList: any[]) {
-    return coinList.map(coin => coin.coinId).join(', ');
+    const list = coinList.map(coin => coin.coinId).join(',');
+    console.log('Coin list:', list);
+    return list;
   }
 
 
 }
+
