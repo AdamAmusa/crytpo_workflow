@@ -17,6 +17,7 @@ export interface Task {
 })
 
 export class WatchlistService {
+  
 
   private readonly firestoreDb = inject(Firestore);
   private readonly authService = inject(Auth);
@@ -46,6 +47,8 @@ export class WatchlistService {
       map(coinList => this.filterCoinList(coinList))
     );
   }
+
+  
   private filterCoinList(coinList: any[]) {
     const list = coinList.map(coin => coin.coinId).join(',');
     console.log('Coin list:', list);

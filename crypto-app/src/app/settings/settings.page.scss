@@ -1,0 +1,16 @@
+.logout-button {
+    font-weight: bold;
+}
+
+.settings-card {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    /* Start from bottom to top */
+    justify-content: flex-start;
+    /* Align items to the start of the container */
+    height: 100%;
+    /* Ensure the container takes the full viewport height */
+    margin-bottom: 3px;
+    margin-top: 3px;
+}

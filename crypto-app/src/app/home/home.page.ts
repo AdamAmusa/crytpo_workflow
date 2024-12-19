@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonBadge } from '@ionic/angular/standalone';
 import {NgClass} from '@angular/common';
-
+import { logoBitcoin, eyeOutline, settingsOutline} from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -13,6 +14,8 @@ import {NgClass} from '@angular/common';
 
 
 export class HomePage {
-
+constructor() {
+  addIcons({logoBitcoin, eyeOutline, settingsOutline}); // Added eyeOffOutline to addIcons
+}
  
 }

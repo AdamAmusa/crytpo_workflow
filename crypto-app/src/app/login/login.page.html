@@ -42,7 +42,7 @@
                   [class.ion-invalid]="userAuthForm.get('password')?.invalid && userAuthForm.get('password')?.touched"
                   [class.ion-valid]="userAuthForm.get('password')?.valid"
                   class="login-input"></ion-input>
-      <a href="" class="login-link">Forgot password?</a>
+      <a href="" (click)="handlePasswordReset()" class="login-link">Forgot password?</a>
 
 
       <ion-button *ngIf="isVisible"  class="login-button" [disabled]="!userAuthForm.valid" expand="block" (click) ="handleAuthentication()" >Sign in</ion-button>

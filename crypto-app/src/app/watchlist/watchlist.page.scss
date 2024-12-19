@@ -8,6 +8,9 @@
     transform: translateY(-50%);
   }
   
+  ion-content {
+    --background: #1e1e1e;
+  }
   #container strong {
     font-size: 20px;
     line-height: 26px;

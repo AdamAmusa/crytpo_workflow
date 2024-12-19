@@ -45,6 +45,15 @@ export class LoginPage {
     }
   }
 
+  async handlePasswordReset() {
+    if (this.userAuthForm.get('email')?.valid) {
+      const email = this.userAuthForm.get('email')?.value;
+      if (email) {
+        await this.auth.sendPasswordResetEmail(email);
+      }
+    }
+  }
+
   selectAuth(button: string) {
 
 

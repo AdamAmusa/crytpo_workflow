@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonList, IonItem,IonLabel, IonIcon } from '@ionic/angular/standalone';
-import { WatchlistService } from '../services/watchlist.service';
-import { CryptoGraphComponent } from '../components/crypto-graph/crypto-graph.component';
 import { CrpytoService } from '../services/crpyto.service';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { caretDown, caretUp } from 'ionicons/icons';
 
 @Component({
   selector: 'app-watchlist',
@@ -17,7 +17,10 @@ import { Router } from '@angular/router';
 export class WatchlistPage implements OnInit { 
   list: any[] = []; // Initialize list as an empty array
    constructor(
-     private crypto: CrpytoService, private router: Router) { }
+     private crypto: CrpytoService, private router: Router) {
+          addIcons({caretDown, caretUp});
+      
+      }
 
 
      async ngOnInit() {
@@ -33,3 +36,5 @@ export class WatchlistPage implements OnInit {
   }
 
 }
+
+

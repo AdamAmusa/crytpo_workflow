@@ -9,6 +9,7 @@ import {
   User,
   UserCredential,
 } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 
 interface UserAuthData {
@@ -22,6 +23,7 @@ interface UserAuthData {
 export class AuthService {
 
   private readonly firebaseAuth = inject(Auth);
+  private readonly router = inject(Router);
 
   async registerUser(userAuthData: UserAuthData): Promise<UserCredential> {
     return createUserWithEmailAndPassword(
@@ -43,8 +45,13 @@ export class AuthService {
     return this.firebaseAuth.currentUser;
   }
 
+  async sendPasswordResetEmail(email: string): Promise<void> {
+    return sendPasswordResetEmail(this.firebaseAuth, email);
+  }
+
  
   async signOutUser(): Promise<void> {
+    this.router.navigate(['/login']);
     return signOut(this.firebaseAuth);
   }
 }

@@ -14,6 +14,10 @@ export const routes: Routes = [
                 path: 'watchlist',
                 loadComponent: () => import('../watchlist/watchlist.page').then(m => m.WatchlistPage)
             },
+            {
+                path: 'settings',
+                loadComponent: () => import('../settings/settings.page').then( m => m.SettingsPage)
+              },
 
         ],
 
