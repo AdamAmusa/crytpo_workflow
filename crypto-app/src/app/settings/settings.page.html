@@ -11,10 +11,12 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-card class="settings-card">
-    <ion-button (click) = "logout()" class="logout-button" color="danger" fill="clear">Logout</ion-button>
+  <div class="settings-card">
+
+      <ion-item>
+        <ion-button (click)="logout()" class="logout-button" color="danger" fill="clear">Logout</ion-button>
+      </ion-item>
 
 
-
-  </ion-card>
+  </div>
 </ion-content>
