@@ -7,6 +7,8 @@ import { addIcons } from 'ionicons';
 import { chevronBackOutline } from "ionicons/icons";
 import { CrpytoService } from '../services/crpyto.service';
 import { WatchlistService } from '../services/watchlist.service';
+import { Browser } from '@capacitor/browser';
+
 @Component({
   selector: 'app-coinview',
   templateUrl: './coinview.page.html',
@@ -19,7 +21,7 @@ export class CoinviewPage implements OnInit {
   coinName?: string = "";
   data: any = [];
   errorMessage: any;
-  constructor(private crypto: CrpytoService, private list:WatchlistService) {
+  constructor(private crypto: CrpytoService, private list: WatchlistService) {
     addIcons({ chevronBackOutline });
     this.coinName = this.crypto.getcoinId();
     this.crypto.getMarketData().subscribe(data => {
@@ -35,6 +37,10 @@ export class CoinviewPage implements OnInit {
     const coin = { coinId: this.crypto.getcoinId() };
     await this.list.addCoinToWatchlist(coin);
   }
+
+  learnMore = async () => {
+    await Browser.open({ url: `https://www.google.com/search?q=${this.coinName}` });
+  };
 
   ngOnInit() {
 
