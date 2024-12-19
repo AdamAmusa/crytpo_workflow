@@ -10,4 +10,38 @@
       <ion-title size="large">watchlist</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+  <ion-list>
+
+    <ion-item button  (click)="viewGraph(crypto.id)" *ngFor="let crypto of list">
+      <ion-label>
+        <div style="display:flex">
+          <div style="flex: 0 0 auto; margin-right: 10px;">
+            <img [src]="crypto.image" alt="crypto.name" style="width: 30px; height: 30px;">
+          </div>
+          <div style="flex:1;">
+            <h2>{{ crypto.name}}</h2>
+            <p>{{ crypto.id}}</p>
+          </div>
+          <div class="crypto-price">
+            <h2>€{{crypto.current_price }} </h2>
+            <div class="change-percentage">
+              <div *ngIf="crypto.price_change_percentage_24h < 0" class="negative-change">
+                <ion-icon name="caret-down"></ion-icon>
+              </div>
+              <div *ngIf="crypto.price_change_percentage_24h > 0" class="positive-change">
+                <ion-icon name="caret-up"></ion-icon>
+              </div>
+              <p [ngClass]="{'positive-change': crypto.price_change_percentage_24h > 0, 'negative-change': crypto.price_change_percentage_24h < 0}"
+                id="pricechange">
+                {{ crypto.price_change_percentage_24h | number:'1.2-2' }}%
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

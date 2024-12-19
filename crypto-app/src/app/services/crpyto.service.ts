@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { WatchlistService } from './watchlist.service';
 
 
 
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class CrpytoService {
   private coinId?: string;
   private marketstatus?: boolean;
-
+  constructor(private watchlist: WatchlistService) { }
 
   ngOnInit() {
     if(this.coinId == null){
@@ -106,5 +107,21 @@ export class CrpytoService {
         });
     });
 
+  }
+
+  getWatchlist(): Observable<any> {
+    const url = `https://api.coingecko.com/api/v3/coins/markets?ids=${this.watchlist.getCoinList}&vs_currency=eur`;
+    return new Observable(observer => {
+      fetch(url, this.options)
+        .then(response => response.json())
+        .then(data => {
+          observer.next(data);
+          observer.complete();
+        })
+        .catch(error => {
+          console.error('Error fetching coin list:', error);
+          observer.error(error);
+        });
+    });
   }
 }
