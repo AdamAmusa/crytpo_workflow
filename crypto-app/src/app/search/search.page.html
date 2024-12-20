@@ -8,12 +8,12 @@
   <ion-header>
     <ion-toolbar>
       <ion-searchbar placeholder="look for coins.." [(ngModel)]="searchQuery" (ionInput)="onSearchInput($event)"
-        (keyup.enter)="onSearchEnter()">></ion-searchbar>
+        (keyup.enter)="onSearchEnter()"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let crypto of displayedCryptos">
+    <ion-item-sliding  *ngFor="let crypto of data">
 
       <ion-item button (click)="viewGraph(crypto.id)">
         <ion-label>
@@ -27,8 +27,9 @@
             </div>
             <div class="crypto-price">        
               <h2>€{{crypto.current_price }} </h2>
-              <ion-label color="medium">24H</ion-label>
-              <div class="change-percentage">
+            
+              <div class="change-percentage"> 
+                 <ion-label color="medium">24H</ion-label>
                 <div *ngIf="crypto.price_change_percentage_24h < 0" class="negative-change">
                   <ion-icon name="caret-down"></ion-icon>
                 </div>
@@ -53,5 +54,10 @@
     </ion-item-sliding>
 
   </ion-list>
+
+  <ion-label *ngIf="(data.length === 0)" class="noDisplay">No Coins</ion-label>
+
+
+
 
 </ion-content>

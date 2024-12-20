@@ -34,11 +34,16 @@ export class AuthService {
   }
 
   async authenticateUser(userAuthData: UserAuthData): Promise<UserCredential> {
+    try{
     return signInWithEmailAndPassword(
       this.firebaseAuth,
       userAuthData.email,
       userAuthData.password
     );
+  }
+  catch(error){
+    throw error;
+  }
   }
 
   fetchActiveUser(): User | null {

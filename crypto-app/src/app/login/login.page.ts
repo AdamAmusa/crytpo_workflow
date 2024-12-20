@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { FormBuilder, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent, IonInput, IonLabel, IonButton, IonTabButton, IonRadio } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardContent, IonInput, IonLabel, IonButton, IonTabButton, IonRadio, IonText } from '@ionic/angular/standalone';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonInput, IonLabel, IonButton, ReactiveFormsModule, IonTabButton, IonRadio, NgIf]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardContent, IonInput, IonLabel, IonButton, ReactiveFormsModule, IonTabButton, IonRadio, NgIf, IonText]
 })
 
 export class LoginPage {
@@ -27,14 +27,26 @@ export class LoginPage {
 
   userAuthForm = this.fb.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(6)] ],
   });
 
 
   async handleAuthentication() {
     if (this.userAuthForm.valid) {
-      await this.auth.authenticateUser(this.userAuthForm.getRawValue());
-      await this.router.navigateByUrl('/home/explore', { replaceUrl: true });
+      try {
+        await this.auth.authenticateUser(this.userAuthForm.getRawValue());
+        await this.router.navigateByUrl('/home/explore', { replaceUrl: true });
+      } catch (error) {
+        // Handle error if wrong credentials
+        this.userAuthForm.get('password')?.setErrors({ invalidCredentials: true });
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          this.userAuthForm.reset();
+        }, 3000);
+       
+      }
+
+
     }
   }
 
@@ -55,14 +67,11 @@ export class LoginPage {
   }
 
   selectAuth(button: string) {
-
-
     if (this.selectButton !== button) {
       this.selectButton = button; // Track which button is selected
       this.isVisible = !this.isVisible;
       this.userAuthForm.reset();
     }
-
 
   }
 

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar,IonSearchbar, IonList, IonItemSliding, IonLabel, IonIcon, IonItem, IonItemOption, IonItemOptions } from '@ionic/angular/standalone';
 import { CrpytoService } from '../services/crpyto.service';
 import { ShortenNumberPipe } from '../shorten-number.pipe';
+import { WatchlistService } from '../services/watchlist.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -14,8 +16,8 @@ import { ShortenNumberPipe } from '../shorten-number.pipe';
 })
 export class SearchPage implements OnInit {
 searchQuery: string = '';
-displayedCryptos: any[] = [];
-  constructor(private crypto: CrpytoService) { }
+data: any[] = [];
+  constructor(private crypto: CrpytoService, private watchlist: WatchlistService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,8 +29,27 @@ displayedCryptos: any[] = [];
 
     onSearchEnter() {
       this.crypto.setcoinId(this.searchQuery);
+      if(this.searchQuery != ''){
       this.crypto.getMarketData().subscribe(data => {
-        this.displayedCryptos = data;
+        this.data = data;
       });
+    }
+ 
+    }
+
+    async addtoWatchlist(coin: any) {
+      const coinObj = {coinId: coin};
+      this.watchlist.addCoinToWatchlist(coinObj);
+    }
+
+    async deletefromWatchlist(coin: any) {
+      this.watchlist.removeCoinFromWatchlist(coin);
+    }
+
+    async viewGraph(id: string) {
+      console.log('View graph for:', id);
+      this.crypto.setcoinId(id);
+      this.router.navigate(['/coinview']);
+
     }
 }
