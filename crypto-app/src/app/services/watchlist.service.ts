@@ -65,11 +65,11 @@ export class WatchlistService {
   }
 
   async inWatchlist(coin: any): Promise<boolean> {
-
     const user = this.authService.currentUser;
     const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin}`);
     const snap = await getDoc(userWatchlistRef);
     if (snap.exists()) {
+      console.log('Coin is in watchlist');
       return true;
     }
     return false;

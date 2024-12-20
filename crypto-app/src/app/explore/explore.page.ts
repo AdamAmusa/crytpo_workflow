@@ -76,6 +76,10 @@ export class ExplorePage{
     await this.watchlist.removeCoinFromWatchlist(coin);
   }
 
+  async inWatchlist(coin: any): Promise<boolean> {
+    return this.watchlist.inWatchlist(coin);
+  }
+
 
 
 }
