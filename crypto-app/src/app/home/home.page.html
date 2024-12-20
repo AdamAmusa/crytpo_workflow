@@ -16,14 +16,11 @@
     </ion-tab-button>
 
 
-   
-
-
   </ion-tab-bar>
 </ion-tabs>
- <ion-fab>
-      <ion-fab-button>
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-    <app-chatbot></app-chatbot>
+<ion-fab horizontal="end" slot="fixed">
+  <ion-fab-button  (click)="openChatbot()">
+    <ion-icon name="information-outline"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<app-chatbot *ngIf="isChatbotVisible"></app-chatbot>

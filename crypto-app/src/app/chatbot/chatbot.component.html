@@ -1,10 +1,10 @@
 <div class="chat-container">
-  <div class="messages">
+  <div class="conversation">
     <div *ngFor="let message of messages" [ngClass]="{'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot'}">
       {{ message.text }}
     </div>
   </div>
-  <div class="input-container">
+  <div class="user-input">
     <ion-input [(ngModel)]="userMessage" placeholder="Type a message..."></ion-input>
     <ion-button (click)="sendMessage()">Send</ion-button>
   </div>

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { collectionData, CollectionReference, DocumentData, onSnapshot, query, where } from '@angular/fire/firestore';
+import { collectionData, CollectionReference, deleteDoc, DocumentData, DocumentReference, getDoc, onSnapshot, query, where } from '@angular/fire/firestore';
 import { addDoc, collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, map, Observable, of, switchMap } from 'rxjs';
 import { getDocs } from '@angular/fire/firestore';
@@ -48,6 +48,15 @@ export class WatchlistService {
     );
   }
 
+  async removeCoinFromWatchlist(coin: String) {
+    const user = this.authService.currentUser;
+    const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin}`);
+    await deleteDoc(userWatchlistRef);
+
+  }
+
+
+
   
   private filterCoinList(coinList: any[]) {
     const list = coinList.map(coin => coin.coinId).join(',');
@@ -55,6 +64,19 @@ export class WatchlistService {
     return list;
   }
 
+  async inWatchlist(coin: any): Promise<boolean> {
+
+    const user = this.authService.currentUser;
+    const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin}`);
+    const snap = await getDoc(userWatchlistRef);
+    if (snap.exists()) {
+      return true;
+    }
+    return false;
+  }
+
 
 }
+
+
 
