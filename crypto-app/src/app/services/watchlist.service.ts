@@ -4,6 +4,7 @@ import { collectionData, CollectionReference, deleteDoc, DocumentData, DocumentR
 import { addDoc, collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, map, Observable, of, switchMap } from 'rxjs';
 import { getDocs } from '@angular/fire/firestore';
+import { AlertController } from '@ionic/angular/standalone';
 
 
 
@@ -18,7 +19,7 @@ export interface Task {
 
 export class WatchlistService {
   
-
+  private readonly alertController = inject(AlertController);
   private readonly firestoreDb = inject(Firestore);
   private readonly authService = inject(Auth);
   private readonly tasksCollectionRef = collection(this.firestoreDb, 'watchlists');
@@ -36,9 +37,28 @@ export class WatchlistService {
   );
 
 
+  private async presentAlert(coin:any, option:any) {
+    if(option === 'delete'){
+      const alert = await this.alertController.create({
+      header: 'Coin Deleted',
+      message: coin.coinId + ' has been deleted from your watchlist',
+      buttons: ['OK'],
+    });
+    await alert.present();
+    }
+    else{
+      const alert = await this.alertController.create({
+      header: 'Coin Added',
+      message: coin.coinId+ ' has been added to your watchlist',
+      buttons: ['OK'],
+    });
+    await alert.present();
+  }
+}
   async addCoinToWatchlist(coin: Task) {
     const user = this.authService.currentUser;
     const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin.coinId}`);
+    this.presentAlert(coin, "add");
     await setDoc(userWatchlistRef, coin, { merge: true });
   }
 
@@ -51,11 +71,11 @@ export class WatchlistService {
   async removeCoinFromWatchlist(coin: String) {
     const user = this.authService.currentUser;
     const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin}`);
+    const coinObj = { coinId: coin };
+    this.presentAlert(coinObj, "delete");
     await deleteDoc(userWatchlistRef);
 
   }
-
-
 
   
   private filterCoinList(coinList: any[]) {
@@ -64,16 +84,7 @@ export class WatchlistService {
     return list;
   }
 
-  async inWatchlist(coin: any): Promise<boolean> {
-    const user = this.authService.currentUser;
-    const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin}`);
-    const snap = await getDoc(userWatchlistRef);
-    if (snap.exists()) {
-      console.log('Coin is in watchlist');
-      return true;
-    }
-    return false;
-  }
+
 
 
 }

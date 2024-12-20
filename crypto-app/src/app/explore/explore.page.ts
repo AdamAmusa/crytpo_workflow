@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList, IonSelect, IonIcon,IonItemSliding,IonItemOption,IonItemOptions, AlertController} from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, IonList, IonSelect, IonIcon,IonItemSliding,IonItemOption,IonItemOptions, IonCol, IonGrid, IonRow} from '@ionic/angular/standalone';
 import { NgFor, NgClass,NgIf, DecimalPipe} from '@angular/common';
 import{caretDown, caretUp} from "ionicons/icons";
 import { CrpytoService } from '../services/crpyto.service';
 import { addIcons } from 'ionicons';
 import { Router } from '@angular/router';
 import { WatchlistService } from '../services/watchlist.service';
+import { ShortenNumberPipe } from '../shorten-number.pipe';
+
 
 @Component({
   selector: 'app-explore',
   templateUrl: './explore.page.html',
   styleUrls: ['./explore.page.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, NgFor, IonList, MatPaginatorModule, IonSelect, NgClass, IonIcon, NgIf, DecimalPipe,IonItemSliding,IonItemOption,IonItemOptions],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonItem, NgFor, IonList, MatPaginatorModule, IonSelect, NgClass, IonIcon, NgIf, DecimalPipe,IonItemSliding,IonItemOption,IonItemOptions, IonRow, IonCol, IonGrid, ShortenNumberPipe],
 })
 export class ExplorePage{
 
@@ -23,7 +25,7 @@ export class ExplorePage{
   length = 0;
   pageIndex = 0;
 
-  constructor(private crypto: CrpytoService, private router: Router, private watchlist:WatchlistService, private alertController: AlertController) {
+  constructor(private crypto: CrpytoService, private router: Router, private watchlist:WatchlistService) {
     addIcons({caretDown, caretUp});
    }
 
@@ -40,17 +42,6 @@ export class ExplorePage{
       this.length = data.length;
       this.updateDisplayedCryptos();
     });
-  }
-
-  private async presentAlert(coin:any, option:any) {
-    if(option === 'delete'){
-      const alert = await this.alertController.create({
-      header: 'Coin Deleted',
-      message: coin + ' has been deleted from your watchlist',
-      buttons: ['OK'],
-    });
-    await alert.present();
-    }
   }
 
   updateDisplayedCryptos() {
@@ -72,13 +63,14 @@ export class ExplorePage{
   }
 
   async deletefromWatchlist(coin: any) {
-    this.presentAlert(coin, "delete");
     await this.watchlist.removeCoinFromWatchlist(coin);
   }
 
-  async inWatchlist(coin: any): Promise<boolean> {
-    return this.watchlist.inWatchlist(coin);
+  async addtoWatchlist(coin: any) {
+    const coinObj = { coinId: coin };
+    await this.watchlist.addCoinToWatchlist(coinObj);
   }
+
 
 
 
