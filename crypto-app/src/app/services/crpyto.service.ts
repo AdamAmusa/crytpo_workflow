@@ -107,7 +107,6 @@ export class CrpytoService {
           observer.error(error);
         });
     });
-
   }
 
   getWatchlist(): Observable<any> {

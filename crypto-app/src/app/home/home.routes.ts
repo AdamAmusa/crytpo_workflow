@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './home.page';
+import { search } from 'ionicons/icons';
 
 export const routes: Routes = [
     {
@@ -18,6 +19,10 @@ export const routes: Routes = [
                 path: 'settings',
                 loadComponent: () => import('../settings/settings.page').then( m => m.SettingsPage)
               },
+              {
+              path:'search',
+                loadComponent: () => import('../search/search.page').then(m => m.SearchPage)
+            }   ,
 
         ],
 
