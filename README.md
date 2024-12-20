@@ -9,8 +9,9 @@
 ## Application Function
 ### Authentication
 Users must log in or signup in order to access the full functionalities of the application. User credentials are stored and validated through [Firebase](https://firebase.google.com/).
-<img src="image.png" alt="alt text" style=" margin-right: 10px;">
-
+<br>
+![alt text](image.png)
+<br>
 
 ### Explore Page
 In the explore page it displays a list of cryptocurrencies along with their market data. The crypto-currencies and their market data are fetched using the [Coingecko Api](https://docs.coingecko.com/v3.0.1/reference/introduction).
@@ -59,19 +60,26 @@ This page displays a list of your saved coins that are associated with your acco
 <br>
 ![alt text](image-9.png)
 <br>
-This page only displays a logout button at the bottom of the screen
-
-Discuss, in detail, what the application does. Add a screenshot image of the application in use. 
+This page only displays a logout button at the bottom of the screen. Pressing it will redirect you back to the login page and disconnect your authentication to firebase.
+<br>
+### AI Assisstant
+![alt text](image-11.png)
+<br>
+Selecting the "i" icon will display a chatbot that specialises in conversational abilities with a vast array of knowledge on different subjects including crypto-currencies. You can type in the input box then select "send" to forward the message to the chatbot and the bot will respond in seconds. This AI is powered by the [Gemini API](https://ai.google.dev/api/generate-content). To close the chatbox just press the i button again.
 
 ## Running the Application
 
-Provide step by step instructions on how to run your applicaiton. Are there any prerequisite softwares required?
+- Install [Node.js](https://nodejs.org/en)
 
 ```MARKDOWN
-List the instructions step by step
-    1. Install Angular CLI - npm install -g @angular/cli
-    2. Log in to Firebase - firebase login
-    3. ionic serve
+    1. git clone <repository-url>
+    2. cd <repository-directory>
+    3. npm install -g @angular/cli
+    4. npm install -g @ionic/cli
+    5. npm install -g @capacitor/cli
+    6. npm install -g firebase-tools
+    7. npm install
+    8. ionic serve
             :
             :
 ```
