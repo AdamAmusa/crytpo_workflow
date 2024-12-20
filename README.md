@@ -2,11 +2,64 @@
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=17277980)
 # Project Name
 
-**Title:** Items Application Manager  
-**Name:** Patrick Murphy  
-**Student ID:** G00123456  
+**Title:** Crypto Viewing Application
+**Name:** Adam Amusa  
+**Student ID:** G00400197  
 
 ## Application Function
+### Authentication
+Users must log in or signup in order to access the full functionalities of the application. User credentials are stored and validated through [Firebase](https://firebase.google.com/).
+<img src="image.png" alt="alt text" style=" margin-right: 10px;">
+
+
+### Explore Page
+In the explore page it displays a list of cryptocurrencies along with their market data. The crypto-currencies and their market data are fetched using the [Coingecko Api](https://docs.coingecko.com/v3.0.1/reference/introduction).
+<br>
+![alt text](image-1.png)
+<br>
+Swiping on a coin reveals options to add or remove a coin from your "watchlist".
+<br>
+![alt text](image-2.png)
+<br>
+<br>
+**Market Graph**
+Upon selection of a coin the page redirects to the graph page, which will display the selected crypto currency's historical data of 24 hours.
+and below it displays additional data about the coin.
+<br>
+![alt text](image-3.png)
+<br>
+<br>
+**Add to watchlist**
+<br>
+![alt text](image-4.png)
+<br>
+When selected the crypto currency currently being viewed will be added to your list of saved crypto-currency called
+"watchlist".
+<br>
+![alt text](image-5.png)
+<br>
+<br>
+**Learn More about __**
+<br>
+![alt text](image-6.png)
+<br>
+Pressing this button opens up a web browser which will redirect the user to the google explorerer giving additional information about the crypto currency. This functionality is powered by Ionic's Capacitor [Browser module](https://capacitorjs.com/docs/apis/browser) which will allow for the browser to be opened on all devices no matter the platform
+<br>
+<br>
+<br>
+### Search
+![alt text](image-7.png)
+<br>
+Pressing the search icon located on the nav bar will send you to a page with a search bar at the top of the screen. Select the searchbar then enter a valid crypto currency and press enter on your keyboard and a crypto currency matching your query will display. You can add the the coin to your watchlist by swiping or view it by tapping or clicking just like on the explore page.
+<br>
+### Watchlist
+![alt text](image-8.png)
+<br>
+This page displays a list of your saved coins that are associated with your account saved on firebase. The functionalites are the same as it is on the explore page but when swiping a coin you are only given the option to delete from your watchlist.
+<br>
+![alt text](image-9.png)
+<br>
+This page only displays a logout button at the bottom of the screen
 
 Discuss, in detail, what the application does. Add a screenshot image of the application in use. 
 
