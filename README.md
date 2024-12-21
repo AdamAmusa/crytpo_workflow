@@ -142,18 +142,18 @@ Confirm and demonstrate how you have met all minimum project requirments:
 - The code snippet of the function highlights the implementation of firebase's storage services to store coinId's under the user's unique id in the firestore document.
 
 5. **Use of a Capacitor Native Plugin**:
-<br>
+    <br>
     This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
-<br>
-<br>
-**Import**
-<br>
-![alt text](image-21.png)
-<br>
-**Implementation**
-<br>
-![alt text](image-22.png)
-<br>
+    <br>
+    <br>
+    **Import**
+    <br>
+    ![alt text](image-21.png)
+    <br>
+    **Implementation**
+    <br>
+    ![alt text](image-22.png)
+    <br>
 
 6. **Unique Project**:
   - This app shouldn't resemble any project that I have made as this is the first time I have ever used the coingecko API as well as creating a crypto applicatin.
