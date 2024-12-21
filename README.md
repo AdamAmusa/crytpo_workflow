@@ -88,21 +88,26 @@ The application is fully functional and aligned with the chosen topic of cryptoc
 The typescript file defines the global routes that will render a page to the user. It uses Ionic RouterModule to configure the routes and lazy load the components for each page.
 
 **Import:**
+<br>
 ![Router Import](image-15.png)
 
 **Inject:**
+<br>
 ![Router Injection](image-17.png)
 
 **Implementation:**
+<br>
 ![Router Implementation](image-16.png)
 
 ### 4. Connection to Backend Service
 The app uses Firebase for authentication and storing user information such as saved coins.
 
 **Configuration:**
+<br>
 ![Firebase Config](image-18.png)
 
 **Firebase Storage:**
+<br>
 ![Storage Implementation](image-19.png)
 ![Storage Function](image-20.png)
 
@@ -110,9 +115,11 @@ The app uses Firebase for authentication and storing user information such as sa
 The app implements Ionic's Browser Capacitor for native browser functionality.
 
 **Import:**
+<br>
 ![Capacitor Import](image-21.png)
 
 **Implementation:**
+<br>
 ![Capacitor Implementation](image-22.png)
 
 ### 6. Unique Project
