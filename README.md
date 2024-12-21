@@ -20,7 +20,7 @@ Swiping on a coin reveals options to add or remove a coin from your "watchlist".
 ![Swipe Actions](image-2.png)
 
 #### Market Graph
-Upon selection of a coin the page redirects to the graph page, which will display the selected cryptocurrency's historical data of 24 hours and additional data about the coin.
+Upon selection of a coin the page redirects to the graph page, which will display the selected cryptocurrency's historical data of 24 hours and below it displays additional data about the coin.
 
 ![Market Graph](image-3.png)
 
@@ -52,7 +52,7 @@ This page only displays a logout button at the bottom of the screen. Pressing it
 ### AI Assistant
 ![AI Assistant](image-11.png)
 
-Selecting the "i" icon will display a chatbot that specializes in conversational abilities with a vast array of knowledge on different subjects including cryptocurrencies. You can type in the input box then select "send" to forward the message to the chatbot and the bot will respond in seconds. This AI is powered by the [Gemini API](https://ai.google.dev/api/generate-content). To close the chatbox just press the i button again.
+Selecting the "i" icon will display a chatbot that specialises in conversational abilities with a vast array of knowledge on different subjects including crypto-currencies. You can type in the input box then select "send" to forward the message to the chatbot and the bot will respond in seconds. This AI is powered by the [Gemini API](https://ai.google.dev/api/generate-content). To close the chatbox just press the i button again.
 
 ## Running the Application
 
@@ -80,7 +80,7 @@ All necessary files are included in the Github repository including the ionic fo
 ### 2. Working Ionic Angular App
 ![Working App](image-13.png)
 
-The application is fully functional and aligned with the chosen topic of cryptocurrency tracking.
+From the image above you can see that the application is working and running and as you can see from the list of crypto currencies it aligns with the topic I chose which was a crypto app.
 
 ### 3. Use of Angular Router
 ![Router Configuration](image-14.png)
@@ -121,7 +121,7 @@ The app uses firebase to handle authentication an store user information such as
 
 
 ### 5. Use of Capacitor Native Plugin
-The app implements Ionic's Browser Capacitor for native browser functionality.
+    This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
 
 **Import:**
 <br>
@@ -149,6 +149,12 @@ The code compiles without any errors.
 - **Encapsulation**: Services are encapsulated in seperated files to allow for convinient and easy use of them throughout the application.
 - **Indentation**: I use Visual Studio's build in code formatter to indent my code in a readable format.
 - **Naming Conventions**: Classes and services are named appropriately based on their functionality or page name, to allow for easy context gathering when reading over the code.
+
+## Application Architecture
+![alt text](Architecture.png)
+
+## Roadblocks and Unfinished Functionality
+- **Coin Validator**: I wanted to implement a function which would take in coin Ids from all of the coins from the explore page and validate if the coin is in the user's watchlist but unfortunately i encountered a problem where the page would freeze when the function is being called. I suspected the issue might have been due to the usage of the pipe() function or Observable type to constantly listen for updates in the users document. Perhaps I should have changed the function from a type observable to just an any type. 
 
 ## Resources
 
