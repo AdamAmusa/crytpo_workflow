@@ -85,7 +85,7 @@ The application is fully functional and aligned with the chosen topic of cryptoc
 ### 3. Use of Angular Router
 ![Router Configuration](image-14.png)
 
-The typescript file defines the global routes that will render a page to the user. It uses Ionic RouterModule to configure the routes and lazy load the components for each page.
+The typescript file above defines the global routes that will render a page to the user. It uses Ionic RouterModule to configure the routes and lazy load the componentes for each page. The routes include the paths for the home page as well as its children routes, the coinview page and the login page. The pages contain route guards which block users which arent signed in from accessing the page. These paths are then used when using Angular Router.
 
 **Import:**
 <br>
@@ -100,16 +100,25 @@ The typescript file defines the global routes that will render a page to the use
 ![Router Implementation](image-16.png)
 
 ### 4. Connection to Backend Service
-The app uses Firebase for authentication and storing user information such as saved coins.
+The app uses firebase to handle authentication an store user information such as the user's saved coins.
+
 
 **Configuration:**
 <br>
 ![Firebase Config](image-18.png)
 
+- In `main.ts` it initialises the connection to the firebase account and project and sets up the firebase services that will be implemented in the angular app.
+
 **Firebase Storage:**
 <br>
 ![Storage Implementation](image-19.png)
+
+ - The service code stub above uses firestore services to fetch a document from the database and retrieve its data using an observable to receive up-to date data.
+
 ![Storage Function](image-20.png)
+
+  - The code snippet of the function highlights the implementation of firebase's storage services to store coinId's under the user's unique id in the firestore document.
+
 
 ### 5. Use of Capacitor Native Plugin
 The app implements Ionic's Browser Capacitor for native browser functionality.
@@ -123,7 +132,7 @@ The app implements Ionic's Browser Capacitor for native browser functionality.
 ![Capacitor Implementation](image-22.png)
 
 ### 6. Unique Project
-This app is unique as it represents my first time working with the Coingecko API and creating a cryptocurrency application.
+  - This app shouldn't resemble any project that I have made as this is the first time I have ever used the coingecko API as well as creating a crypto application.
 
 ### 7. Code Compilation
 ![Successful Compilation](image-13.png)
@@ -137,9 +146,9 @@ The code compiles without any errors.
 ![Commit History](image-23.png)
 
 ### 10. Code Formatting Standards
-- **Encapsulation:** Services are encapsulated in separated files
-- **Indentation:** Using Visual Studio's built-in code formatter
-- **Naming Conventions:** Classes and services are named appropriately based on functionality
+- **Encapsulation**: Services are encapsulated in seperated files to allow for convinient and easy use of them throughout the application.
+- **Indentation**: I use Visual Studio's build in code formatter to indent my code in a readable format.
+- **Naming Conventions**: Classes and services are named appropriately based on their functionality or page name, to allow for easy context gathering when reading over the code.
 
 ## Resources
 
