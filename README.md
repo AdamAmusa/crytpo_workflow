@@ -127,14 +127,11 @@ Confirm and demonstrate how you have met all minimum project requirments:
    **Configuration**
    <br>
    ![alt text](image-18.png)
-   <br>
     - In `main.ts` it initialises the connection to the firebase account and project and sets up the firebase services that will be implemented in the angular app.
-   <br>
    <br>
     **Firebase Storage**
    <br>
     ![alt text](image-19.png)
-   <br>
     - The service code stub above uses firestore services to fetch a document from the database and retrieve its data using an observable to receive up-to date data.
    <br>
      ![alt text](image-20.png)
@@ -142,17 +139,13 @@ Confirm and demonstrate how you have met all minimum project requirments:
     - The code snippet of the function highlights the implementation of firebase's storage services to store coinId's under the user's unique id in the firestore document.
 
 5. **Use of a Capacitor Native Plugin**:
-    <br>
-    This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
-    <br>
-    <br>
+   - This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
+   <br>
     **Import**
-    <br>
-    ![alt text](image-21.png)
+    - ![alt text](image-21.png)
     <br>
     **Implementation**
-    <br>
-    ![alt text](image-22.png)
+    - ![alt text](image-22.png)
     <br>
 
 6. **Unique Project**:
@@ -162,10 +155,8 @@ Confirm and demonstrate how you have met all minimum project requirments:
 ![alt text](image-13.png)
 - As displayed on the screenshot, the code compiles without any errors.
 
-
 8. **Code commenting**
-<br>
-![alt text](image-24.png)
+- ![alt text](image-24.png)
 <br>
 
 9. **Consistent code commits per week**
