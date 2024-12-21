@@ -139,7 +139,7 @@ Confirm and demonstrate how you have met all minimum project requirments:
     - The code snippet of the function highlights the implementation of firebase's storage services to store coinId's under the user's unique id in the firestore document.
 
 5. **Use of a Capacitor Native Plugin**:
-   - This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
+    - This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
     <br>
     **Import**
     <br>
