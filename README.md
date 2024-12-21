@@ -142,9 +142,11 @@ Confirm and demonstrate how you have met all minimum project requirments:
    - This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
    <br>
     **Import**
+    <br>
     - ![alt text](image-21.png)
     <br>
     **Implementation**
+    <br>
     - ![alt text](image-22.png)
     <br>
 
