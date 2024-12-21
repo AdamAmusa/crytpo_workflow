@@ -151,7 +151,7 @@ The code compiles without any errors.
 - **Naming Conventions**: Classes and services are named appropriately based on their functionality or page name, to allow for easy context gathering when reading over the code.
 
 ## Application Architecture
-![alt text](Architecture.png)
+![alt text](Architecture-1.png)
 
 ## Roadblocks and Unfinished Functionality
 - **Coin Validator**: I wanted to implement a function which would take in coin Ids from all of the coins from the explore page and validate if the coin is in the user's watchlist but unfortunately i encountered a problem where the page would freeze when the function is being called. I suspected the issue might have been due to the usage of the pipe() function or Observable type to constantly listen for updates in the users document. Perhaps I should have changed the function from a type observable to just an any type. 
