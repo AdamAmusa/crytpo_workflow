@@ -121,7 +121,7 @@ The app uses firebase to handle authentication an store user information such as
 
 
 ### 5. Use of Capacitor Native Plugin
-    This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
+This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
 
 **Import:**
 <br>
@@ -158,4 +158,8 @@ The code compiles without any errors.
 
 ## Resources
 
-* [YouTube Tutorial](https://www.youtube.com/watch?v=Y0vH5Cm3HAk)
+* [Coin Gecko ](https://www.coingecko.com/)
+* [Google AI Studio](https://ai.google.dev/gemini-api/docs)
+* [Ionic Framework](https://ionicframework.com/)
+* [ChartJs ](https://www.chartjs.org/)
+* [Angular Paginator](https://material.angular.io/components/paginator/overview)
