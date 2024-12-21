@@ -80,24 +80,102 @@ Selecting the "i" icon will display a chatbot that specialises in conversational
     6. npm install -g firebase-tools
     7. npm install
     8. ionic serve
-            :
-            :
 ```
 
 ## Minimum Project Requirments
 
 Confirm and demonstrate how you have met all minimum project requirments:
 
-* The project, including code and documentaion, will be fully contained in the provied Git repo.
-* The project **MUST** contain a working Ionic Angular app which matches the app you chose.
-* The Ionic app must include the use of the Angular Router, Connection to a Backend service such as Firebase or Supabase, Use of a Capacitor native plugin.
-* The app must not resemble in any way an app you have previously developed for another module or are currently developing for any project. 
-* The code MUST compile. 30% grade reduction if code does not compile when I issue the ionic serve command. 
-* The application code must be formatted in a consistent and standard way.
-* The code must contain comments. One comment per class, method and variable at minimum.
-* There must be two commits per week minimum (Note: Should be many commits per day coding).
-* The documentation and commentary must be free of a grammar and speling mistakes.
 
+1. **Fully Contained Project**:
+    <br>
+    ![alt text](image-12.png)
+    <br>
+- All the necessary files are included in the Github repository including the  ionic folder `crypto-app` as well as its config files and typescript files.         .
+
+2. **Working Ionic Angular App**:
+    <br>
+    ![alt text](image-13.png)
+    <br>
+- From the image above you can see that the application is working and running and as you can see from the list of crypto currencies it matches the topic I chose which was a crypto app.
+    <br>
+3. **Use of Angular Router**:
+    <br>
+    ![alt text](image-14.png)
+    <br>
+    The typescript file above defines the global routes that will render a page to the user. It uses Ionic RouterModule to configure the routes and lazy load the componentes for each page. The routes include the paths for the home page as well as its children routes, the coinview page and the login page. The pages contain route guards which block users which arent signed in from accessing the page. These paths are then used when using Angular Router.
+    <br>
+    <br>
+    **Import**
+    <br>
+    ![alt text](image-15.png)
+    <br>
+    <br>
+    **Inject**
+    <br>
+    ![alt text](image-17.png)
+    <br>
+    <br>
+    **Implement**
+    <br>
+    ![alt text](image-16.png)
+    <br>
+4. **Connection to a Backend Service**:
+    <br>
+    The app uses firebase to handle authentication an store user information such as the user's saved coins.
+    <br>
+   **Configuration**
+   <br>
+   ![alt text](image-18.png)
+   <br>
+    - In `main.ts` it initialises the connection to the firebase account and project and sets up the firebase services that will be implemented in the angular app.
+   <br>
+   <br>
+    **Firebase Storage**
+   <br>
+    ![alt text](image-19.png)
+   <br>
+    - The service code stub above uses firestore services to fetch a document from the database and retrieve its data using an observable to receive up-to date data.
+   <br>
+     ![alt text](image-20.png)
+   <br>
+   - The code snippet of the function highlights the implementation of firebase's storage services to store coinId's under the user's unique id in the firestore document.
+
+5. **Use of a Capacitor Native Plugin**:
+<br>
+    This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
+<br>
+<br>
+**Import**
+<br>
+![alt text](image-21.png)
+<br>
+**Implementation**
+<br>
+![alt text](image-22.png)
+<br>
+
+6. **Unique Project**:
+  - This app shouldn't resemble any project that I have made as this is the first time I have ever used the coingecko API as well as creating a crypto applicatin.
+
+7. **Code Compilation**:
+![alt text](image-13.png)
+- As displayed on the screenshot, the code compiles without any errors.
+
+
+8. **Code commenting**
+<br>
+![alt text](image-24.png)
+<br>
+
+9. **Consistent code commits per week**
+ ![alt text](image-23.png)
+
+
+10. **Code formatted in a Consistent and Standard Way**
+- **Encapsulation**: Services are encapsulated in seperated files to allow for convinient and easy use of them throughout the application.
+- **Indentation**: I use Visual Studio's build in code formatter to indent my code in a readable format.
+- **Naming Conventions**: Classes and services are named appropriately based on their functionality or page name, to allow for easy context gathering when reading over the code.
 ## Project Requirments above and beyond
 
 Discuss any application features or design elements that show you went above and beyone basic requirments.
