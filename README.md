@@ -140,7 +140,7 @@ Confirm and demonstrate how you have met all minimum project requirments:
 
 5. **Use of a Capacitor Native Plugin**:
    - This app uses Ionic's Browser Capacitor to access the native functionality of opening a browser on a mobile device.
-   <br>
+    <br>
     **Import**
     <br>
     - ![alt text](image-21.png)
