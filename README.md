@@ -150,6 +150,176 @@ The code compiles without any errors.
 - **Indentation**: I use Visual Studio's build in code formatter to indent my code in a readable format.
 - **Naming Conventions**: Classes and services are named appropriately based on their functionality or page name, to allow for easy context gathering when reading over the code.
 
+## Project Requirements above and beyond
+### Crypto Graph
+- In `crypto-graph.component.ts` I implemented [ChartJs's ](https://www.chartjs.org/) charting library to build a line graph representing historical data of a coin over the last 24 hours. The chart data is fetched from CoinGecko's API and mapped into the data properties.  I also implemented a custom plugin which displays a vertical dash line when a mouse or a finger is dragged along the canvas. That custum plugin solution was supplied by an answer from [Stack Overflow](https://stackoverflow.com/questions/56793332/add-horizontal-crosshairs-using-chart-js). 
+
+      this.chartInstance = new Chart(this.cryptoChart?.nativeElement, {
+        type: 'line',
+        data: {
+          labels: data.prices.map((price: any) => new Date(price[0]).toLocaleTimeString()),
+          datasets: [
+            {
+              hoverBorderJoinStyle: 'round',
+              borderJoinStyle: 'round',
+              label: 'Price',
+              data: data.prices.map((price: any) => price[1]),
+              borderColor: this.lineColor,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              fill: false,
+              pointRadius: 0,
+              pointHoverRadius: 6,
+              pointHoverBackgroundColor: this.lineColor,
+              borderWidth: 2,
+
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
+          layout: {
+            
+            padding: {
+              left: 10,
+              right: 10,
+            }
+          },
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              enabled: true,
+              position: 'nearest',
+              backgroundColor: 'rgba(0,0,0,0.7)',
+              titleColor: 'white',
+              bodyColor: 'white',
+              borderColor: 'blue',
+              borderWidth: 1,
+              callbacks: {
+                title: (context) => {
+                  return context[0].label; // Show the timestamp
+                },
+                label: (context) => {
+                  return `Price: $${context.parsed.y.toFixed(2)}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              title: {
+                display: false,
+                text: 'Time'
+              },
+              grid: {
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: true
+              },
+              
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Price ($)'
+              },
+              beginAtZero: false,
+              grid: {
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: true
+              }
+            }
+          }
+        },
+        //Dashed line custom plugin
+        plugins: [{
+          id: 'customCrosshair',
+          afterDraw: (chart) => {
+            const ctx = chart.ctx;
+            const chartArea = chart.chartArea;
+            const scales = chart.scales;
+
+            // Get the active elements (hovered elements)
+            const activeElements = chart.getActiveElements();
+
+            if (activeElements.length > 0) {
+              const dataIndex = activeElements[0].index;
+              const xScale = scales['x'];
+
+              // Draw vertical line
+              ctx.save();
+              ctx.beginPath();
+              ctx.moveTo(xScale.getPixelForValue(dataIndex), chartArea.bottom);
+              ctx.lineTo(xScale.getPixelForValue(dataIndex), chartArea.top);
+              ctx.strokeStyle = 'white';
+              ctx.lineWidth = 1;
+              ctx.setLineDash([5, 5]); // Dashed line
+              ctx.stroke();
+              ctx.restore();
+            }
+          }
+        }]
+      });
+    
+
+### Visual Demonstration
+## ![alt text](<Screenshot 2024-12-22 162303.png>)
+
+### Segmented page in the coin Explorer
+- In the `explore.html` page the user is given a list of 500 crypto-coins which were fetched from [CoinGecko's API](https://www.coingecko.com), Rendering an ionic list of 500 contents takes a good while and scrolling through 500 crypto-coins can be mundain, Thus I implemented [Angular Paginator](https://material.angular.io/components/paginator/overview) to segment the response of 500 coins into 100 each to reduce load time and improve the design of the page. 
+
+`<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>`
+- This is done by defining your preferred page size which would be the amount of data that will be rendered per page, and the length which is the total amount of data that will be partitioned.
+### Visual Example
+![alt text](image.png)
+
+### Code Demonstration
+```typescript
+export class ExplorePage {
+
+  cryptos: any[] = [];
+  displayedCryptos: any[] = [];
+  pageSize = 100;
+  length = 0;
+  pageIndex = 0;
+
+  constructor(private crypto: CryptoService, private router: Router, private watchlist: WatchlistService) { }
+
+  async ngOnInit() {
+    this.crypto.getCoinList().subscribe(data => {
+      this.cryptos = data;
+      this.length = data.length;
+      this.updateDisplayedCryptos();
+    });
+  }
+
+  updateDisplayedCryptos() {
+    const startIndex = this.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.displayedCryptos = this.cryptos.slice(startIndex, endIndex);
+  }
+
+  onPageChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.updateDisplayedCryptos();
+  }
+
+}
+```
+
+
 ## Application Architecture
 ![alt text](images/Architecture-1.png)
 
@@ -157,7 +327,6 @@ The code compiles without any errors.
 - **Coin Validator**: I wanted to implement a function which would take in coin Ids from all of the coins from the explore page and validate if the coin is in the user's watchlist but unfortunately i encountered a problem where the page would freeze when the function is being called. I suspected the issue might have been due to the usage of the pipe() function or Observable type to constantly listen for updates in the users document. Perhaps I should have changed the function from a type observable to just an any type. 
 
 ## Resources
-
 * [Coin Gecko ](https://www.coingecko.com/)
 * [Google AI Studio](https://ai.google.dev/gemini-api/docs)
 * [Ionic Framework](https://ionicframework.com/)
