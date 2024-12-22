@@ -280,7 +280,7 @@ The code compiles without any errors.
 </mat-paginator>`
 - This is done by defining your preferred page size which would be the amount of data that will be rendered per page, and the length which is the total amount of data that will be partitioned.
 ### Visual Example
-![alt text](image.png)
+![alt text](images/image1.png)
 
 ### Code Demonstration
 ```typescript
