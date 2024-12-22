@@ -268,7 +268,7 @@ The code compiles without any errors.
     
 
 ### Visual Demonstration
-## ![alt text](<Screenshot 2024-12-22 162303.png>)
+![alt text](images/graph.png)
 
 ### Segmented page in the coin Explorer
 - In the `explore.html` page the user is given a list of 500 crypto-coins which were fetched from [CoinGecko's API](https://www.coingecko.com), Rendering an ionic list of 500 contents takes a good while, and scrolling through 500 crypto-coins can be mundane, Thus I implemented [Angular Paginator](https://material.angular.io/components/paginator/overview) to segment the response of 500 coins into 100 each to reduce load time and improve the design of the page. 
