@@ -322,6 +322,13 @@ export class ExplorePage {
 
 ## Application Architecture
 ![alt text](images/Architecture-1.png)
+### Explore Page
+Crypto data is fetched and rendered onto the explore page using a function from `crypto.service.ts`
+### Search Page
+User enters a coin name into the search bar, they press enter on the keyboard and only one coin is requested from the API, this functionality is implemented from `crypto.service.ts`'s `getMarketData()` function which fetches data based on the coin id. 
+- Coinview Page
+- Graph Component
+- Watchlist Page
 
 ## Roadblocks and Unfinished Functionality
 - **Coin Validator**: I wanted to implement a function which would take in coin Ids from all of the coins from the explore page and validate if the coin is in the user's watchlist but unfortunately i encountered a problem where the page would freeze when the function is being called. I suspected the issue might have been due to the usage of the pipe() function or Observable type to constantly listen for updates in the users document. Perhaps I should have changed the function from a type observable to just an any type. 
