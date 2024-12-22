@@ -20,21 +20,25 @@ export class CrpytoService {
     }
 
   }
+  // Set the coinId
   public setcoinId(id: string) {
+    // Save the coinId to localStorage so it persists after page reload
     localStorage.setItem('coinId', id);
     this.coinId = id;
 
   }
 
-  
+  //Get the market status
   public getmarketStatus(): boolean {
       return this.marketstatus?? false;
     }
 
+  // Get the coinId
   public getcoinId() {
     return this.coinId;
   }
 
+  // Get the coin list
   private readonly url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&per_page=250";
   private readonly options = { 
     method: 'GET', 
@@ -47,7 +51,7 @@ export class CrpytoService {
       'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-cg-demo-api-key'
     }
   };
-  
+  //retrieve coin list
   getCoinList(): Observable<any> {
     return new Observable(observer => {
       fetch(this.url, this.options)
@@ -64,7 +68,6 @@ export class CrpytoService {
   }
 
   //retrieve graph data by id
-
   getChartdata(): Observable<any> {
     const url = `https://api.coingecko.com/api/v3/coins/${this.coinId}/market_chart?vs_currency=eur&days=1`;
     return new Observable(observer => {
@@ -81,7 +84,7 @@ export class CrpytoService {
     });
   }
 
-
+//retrieve market data by id
   getMarketData(): Observable<any> {
     if(this.coinId == null){
       this.coinId = localStorage.getItem('coinId') ?? '';
@@ -109,8 +112,9 @@ export class CrpytoService {
     });
   }
 
+  //up-to-date ids from watchlist collection to get coin watchlist data from api
   getWatchlist(): Observable<any> {
-    return this.watchlist.getCoinList().pipe(
+    return this.watchlist.getCoinList().pipe(//
       switchMap((coinList: string) => {
         console.log('Query string for watchlist:', coinList);
         const url = `https://api.coingecko.com/api/v3/coins/markets?ids=${coinList}&vs_currency=eur`;

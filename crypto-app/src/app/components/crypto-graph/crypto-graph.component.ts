@@ -29,6 +29,7 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
     else{
       this.lineColor = 'red';
     }
+    // Create the chart
     this.createChart();
     this.beforePrintHandler();
     
@@ -38,7 +39,9 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
 
 
  beforePrintHandler () {
+  // Resize the chart before printing
     for (let id in Chart.instances) {
+      // Resize the chart to fit the page
         Chart.instances[id].resize();
     }
 }
@@ -49,7 +52,7 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
       if (this.chartInstance) {
         this.chartInstance.destroy();
       }
-
+      // Create a new chart and store it in the chartInstance property
       this.chartInstance = new Chart(this.cryptoChart?.nativeElement, {
         type: 'line',
         data: {
@@ -134,6 +137,7 @@ export class CryptoGraphComponent implements OnInit, OnDestroy {
             }
           }
         },
+        // Custom plugin to draw a vertical line on the chart
         plugins: [{
           id: 'customCrosshair',
           afterDraw: (chart) => {

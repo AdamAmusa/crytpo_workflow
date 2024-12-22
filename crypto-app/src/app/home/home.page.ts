@@ -22,6 +22,7 @@ constructor() {
 }
 
 
+// Function to toggle the chatbot visibility
 openChatbot() {
     this.isChatbotVisible = !this.isChatbotVisible;
 }

@@ -26,17 +26,17 @@ export class WatchlistService {
 
   private readonly authenticatedUser$ = new BehaviorSubject(this.authService.currentUser);
 
-
+  // Get the user's watchlist
   private readonly userWatchlist$ = this.authenticatedUser$.pipe(
     switchMap(user => !user ? of([]) :
-      collectionData(
+      collectionData(// Get the user's watchlist
         query(collection(this.tasksCollectionRef, `${user?.uid}/watchlist`)),
         { idField: 'id' }
       ) as Observable<Task[]>
     )
   );
 
-
+  //display alert when coin is added or deleted
   private async presentAlert(coin:any, option:any) {
     if(option === 'delete'){
       const alert = await this.alertController.create({
@@ -55,6 +55,7 @@ export class WatchlistService {
     await alert.present();
   }
 }
+//add coin to watchlist
   async addCoinToWatchlist(coin: Task) {
     const user = this.authService.currentUser;
     const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin.coinId}`);
@@ -62,12 +63,14 @@ export class WatchlistService {
     await setDoc(userWatchlistRef, coin, { merge: true });
   }
 
+  //get list of coins in watchlist
   getCoinList(): Observable<string> {
     return this.userWatchlist$.pipe(
       map(coinList => this.filterCoinList(coinList))
     );
   }
 
+  //remove coin from watchlist
   async removeCoinFromWatchlist(coin: String) {
     const user = this.authService.currentUser;
     const userWatchlistRef = doc(this.tasksCollectionRef, `${user?.uid}/watchlist/${coin}`);
@@ -77,7 +80,7 @@ export class WatchlistService {
 
   }
 
-  
+  //filter coin list data from document in a query format
   private filterCoinList(coinList: any[]) {
     const list = coinList.map(coin => coin.coinId).join(',');
     console.log('Coin list:', list);

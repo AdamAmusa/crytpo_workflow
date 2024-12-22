@@ -21,7 +21,7 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
   }
 
-
+//logout function
  async logout() {
     await this.auth.signOutUser();
   }

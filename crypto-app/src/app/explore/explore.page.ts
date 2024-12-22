@@ -50,12 +50,16 @@ export class ExplorePage{
     this.displayedCryptos = this.cryptos.slice(startIndex, endIndex);
   }
 
+  // Pagination
   onPageChange(event: PageEvent) {
+    // Update the page index and page size
     this.pageIndex = event.pageIndex;
+    // Update the page size
     this.pageSize = event.pageSize;
     this.updateDisplayedCryptos();
   }
 
+  // View graph for a specific coin
   viewGraph(id: string) {
     console.log('View graph for:', id);
     this.crypto.setcoinId(id);
@@ -63,11 +67,13 @@ export class ExplorePage{
   }
 
   async deletefromWatchlist(coin: any) {
+    // Remove the coin from the watchlist
     await this.watchlist.removeCoinFromWatchlist(coin);
   }
 
   async addtoWatchlist(coin: any) {
     const coinObj = { coinId: coin };
+    // Add the coin to the watchlist
     await this.watchlist.addCoinToWatchlist(coinObj);
   }
 

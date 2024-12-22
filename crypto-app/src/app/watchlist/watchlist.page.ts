@@ -30,13 +30,13 @@ export class WatchlistPage implements OnInit {
         this.list = data;
       }); // Subscribe to the result of getWatchlist
     }
-
+    //view graph for coin
   viewGraph(id: string) {
     console.log('View graph for:', id);
     this.crypto.setcoinId(id);
     this.router.navigate(['/coinview']);
   }
-
+  //delete coin from watchlist
   async deletefromWatchlist(coin: any) {
     this.watchlist.removeCoinFromWatchlist(coin);
   }

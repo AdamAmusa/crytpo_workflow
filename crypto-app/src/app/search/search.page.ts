@@ -24,12 +24,15 @@ data: any[] = [];
 
 
     onSearchInput(event: any) {
+      // Update the search query
       this.searchQuery = event.target.value;
     }
 
     onSearchEnter() {
+      //Set the coinId to the search query
       this.crypto.setcoinId(this.searchQuery);
       if(this.searchQuery != ''){
+        //Subscribe to the getMarketData method to retrieve coin data
       this.crypto.getMarketData().subscribe(data => {
         this.data = data;
       });
