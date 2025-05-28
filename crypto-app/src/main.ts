@@ -7,7 +7,7 @@ import { AppComponent } from './app/app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
-import { initializeAppCheck, ReCaptchaEnterpriseProvider, provideAppCheck } from '@angular/fire/app-check';
+import { environment } from './environments/environment';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { getFunctions, provideFunctions } from '@angular/fire/functions';
@@ -24,13 +24,13 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideAnimations(), provideFirebaseApp(() => initializeApp
       ({
-        "projectId": process.env['FIREBASE_APP_PROJECT_ID'] || '',
-        "appId": process.env['FIREBASE_APP_ID'] || '',
-        "storageBucket": process.env['FIREBASE_STORAGE_BUCKET'] || '',
-        "apiKey": process.env['FIREBASE_API_KEY'] || '',
-        "authDomain": process.env['FIREBASE_AUTH_DOMAIN'] || '',
-        "messagingSenderId": process.env['FIREBASE_MESSAGING_SENDER_ID'] || '',
-        "measurementId": process.env['FIREBASE_MEASUREMENT_ID'] || '',
+        "projectId": environment.firebase.FIREBASE_APP_PROJECT_ID,
+        "appId": environment.firebase.FIREBASE_APP_ID,
+        "storageBucket": environment.firebase.FIREBASE_STORAGE_BUCKET,
+        "apiKey": environment.firebase.FIREBASE_API_KEY,
+        "authDomain": environment.firebase.FIREBASE_AUTH_DOMAIN,
+        "messagingSenderId": environment.firebase.FIREBASE_MESSAGING_SENDER_ID,
+        "measurementId": environment.firebase.FIREBASE_MEASUREMENT_ID,
       })),
     provideAuth(() => getAuth()),
     provideAnalytics(() => getAnalytics()),

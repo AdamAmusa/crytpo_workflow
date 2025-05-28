@@ -13,18 +13,26 @@ jobs:
       - uses: actions/checkout@v4
       - run: cd crypto-app && npm install -g @ionic/cli
       - run: cd crypto-app && npm ci && npm run build
+      - name: Generate environment.prod.ts
+        run: |
+          cat > crypto-app/src/environments/environment.prod.ts <<EOF
+          export const environment = {
+            production: true,
+            firebase: {
+              apiKey: "${FIREBASE_API_KEY}",
+              authDomain: "${FIREBASE_AUTH_DOMAIN}",
+              projectId: "${FIREBASE_APP_PROJECT_ID}",
+              storageBucket: "${FIREBASE_STORAGE_BUCKET}",
+              messagingSenderId: "${FIREBASE_MESSAGING_SENDER_ID}",
+              appId: "${FIREBASE_APP_ID}",
+              measurementId: "${FIREBASE_MEASUREMENT_ID}"
+            },
+            geminiApiKey: "${GEMINI_API_KEY}"
+          };
+          EOF          
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CRYPTO_BE9D5 }}
           channelId: live
           projectId: crypto-be9d5
-        env:
-          FIREBASE_API_KEY : ${{ secrets.FIREBASE_API_KEY }}
-          FIREBASE_AUTH_DOMAIN : ${{ secrets.FIREBASE_AUTH_DOMAIN }}
-          FIREBASE_APP_PROJECT_ID : ${{ secrets.FIREBASE_APP_PROJECT_ID }}
-          FIREBASE_STORAGE_BUCKET : ${{ secrets.FIREBASE_STORAGE_BUCKET }}
-          FIREBASE_MESSAGING_SENDER_ID : ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
-          FIREBASE_APP_ID : ${{ secrets.FIREBASE_APP_ID }}
-          FIREBASE_MEASUREMENT_ID : ${{ secrets.FIREBASE_MEASUREMENT_ID }}
-          GEMINI_API_KEY : ${{ secrets.GEMINI_API_KEY }}  
