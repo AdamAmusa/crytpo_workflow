@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cd crypto-app && npm install -g @ionic/cli
-      - run: cd crypto-app && npm ci && npm run build
       - name: Generate environment.prod.ts
         run: |
           cat > crypto-app/src/environments/environment.prod.ts <<EOF
@@ -29,7 +28,9 @@ jobs:
             },
             geminiApiKey: "${GEMINI_API_KEY}"
           };
-          EOF          
+          EOF
+      - name: Install dependencies and build
+        run: cd crypto-app && npm ci && npm run build              
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
