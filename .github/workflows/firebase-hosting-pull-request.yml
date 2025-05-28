@@ -19,3 +19,4 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CRYPTO_BE9D5 }}
           projectId: crypto-be9d5
+          entryPoint: crypto-app
