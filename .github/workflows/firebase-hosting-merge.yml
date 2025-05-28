@@ -27,7 +27,7 @@ jobs:
               FIREBASE_MEASUREMENT_ID: "${FIREBASE_MEASUREMENT_ID}",
             },
             GEMINI_API_KEY: "${GEMINI_API_KEY}",
-            COINGECO_API_KEY: "${COINGECKO_API_KEY}"
+            COINGECKO_API_KEY: "${COINGECKO_API_KEY}"
           };
           EOF
       - name: Install dependencies and build
