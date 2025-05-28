@@ -24,13 +24,13 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideAnimations(), provideFirebaseApp(() => initializeApp
       ({
-        "projectId": "crypto-be9d5",
-        "appId": "1:926217799510:web:5d2151806cbcb9f3ab38f7",
-        "storageBucket": "crypto-be9d5.firebasestorage.app",
-        "apiKey": "AIzaSyCs4PnUAFt8EUkhthZsqYJuaedq9hJJiRA",
-        "authDomain": "crypto-be9d5.firebaseapp.com",
-        "messagingSenderId": "926217799510",
-        "measurementId": "G-29WZZ9K3DX"
+        "projectId": process.env['FIREBASE_APP_PROJECT_ID'] || '',
+        "appId": process.env['FIREBASE_APP_ID'] || '',
+        "storageBucket": process.env['FIREBASE_STORAGE_BUCKET'] || '',
+        "apiKey": process.env['FIREBASE_API_KEY'] || '',
+        "authDomain": process.env['FIREBASE_AUTH_DOMAIN'] || '',
+        "messagingSenderId": process.env['FIREBASE_MESSAGING_SENDER_ID'] || '',
+        "measurementId": process.env['FIREBASE_MEASUREMENT_ID'] || '',
       })),
     provideAuth(() => getAuth()),
     provideAnalytics(() => getAnalytics()),

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { GoogleGenerativeAI } from '@google/generative-ai'
-import { environment } from 'src/environments/environment';
 
-const genAI = new GoogleGenerativeAI(environment.apiKey2);//API key for the generative AI
+
+const genAI = new GoogleGenerativeAI(process.env['GEMINI_API_KEY'] || '');//API key for the generative AI
 const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' }); // Model for the generative AI
 
 // Start a new chat
