@@ -1,9 +1,8 @@
+import { environment } from 'src/environments/environment';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { WatchlistService } from './watchlist.service';
 import { switchMap } from 'rxjs/operators';
-
 
 
 @Injectable({
@@ -44,7 +43,7 @@ export class CrpytoService {
     method: 'GET', 
     headers: { 
       'accept': 'application/json', 
-      'x-cg-demo-api-key': environment.apiKey,
+      'x-cg-demo-api-key': environment.COINGECKO_API_KEY, // API key for CoinGecko
       // Added CORS headers
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',

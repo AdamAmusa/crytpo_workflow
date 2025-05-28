@@ -10,4 +10,5 @@ export const environment = {
     FIREBASE_MEASUREMENT_ID: ''
   },
   GEMINI_API_KEY: '',
+  COINGECKO_API_KEY: ''
 };
