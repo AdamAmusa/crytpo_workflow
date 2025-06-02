@@ -1,7 +1,6 @@
 # Crypto Viewing Application
 
-**Student Name:** Adam Amusa  
-**Student ID:** G00400197  
+### Domain: https://crypto-be9d5.web.app/login
 
 ## Application Function
 
